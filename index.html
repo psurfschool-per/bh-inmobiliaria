@@ -188,130 +188,124 @@
     </div><!-- /container -->
     <!-- Carrusel edge-to-edge: al margen de la pantalla -->
     <div class="mt-3 pl-4 sm:pl-6 lg:pl-[max(1.5rem,calc((100vw-80rem)/2+2rem))]">
-      <div id="grid-propiedades" class="flex gap-4 sm:gap-5 overflow-x-auto pb-4 pr-4 sm:pr-8 snap-x snap-mandatory scroll-smooth cursor-grab select-none">
+      <div id="grid-propiedades" tabindex="0" aria-label="Lista de propiedades, usa flechas para navegar" class="flex gap-4 sm:gap-5 overflow-x-auto pb-4 pr-4 sm:pr-8 snap-x snap-mandatory scroll-smooth cursor-grab select-none focus:outline-none focus-visible:ring-2 focus-visible:ring-gold rounded-xl">
 
         <!-- CARD 1 -->
-        <article class="prop-card fade-in bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-card hover:shadow-xl transition min-w-[84%] sm:min-w-[47%] lg:min-w-[31.8%] shrink-0 snap-start" data-operacion="venta" data-tipo="casa" data-titulo="Casa Moderna Las Lomas">
-          <div class="relative h-44 sm:h-48 overflow-hidden">
-            <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=800&auto=format&fit=crop" alt="Casa Moderna Las Lomas" class="card-img w-full h-full object-cover" loading="lazy">
-            <span class="absolute top-4 left-4 bg-navy text-white text-xs font-bold px-3 py-1.5 rounded-full tracking-wide">EN VENTA</span>
-
+        <article class="prop-card bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-card hover:shadow-xl transition min-w-[88%] sm:min-w-[68%] lg:min-w-[48.5%] shrink-0 snap-start fade-in flex flex-row" data-operacion="venta" data-tipo="casa" data-titulo="Casa Moderna Las Lomas">
+          <div class="relative w-[38%] sm:w-[42%] shrink-0 overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=800&auto=format&fit=crop" alt="Casa Moderna Las Lomas" class="card-img absolute inset-0 w-full h-full object-cover" loading="lazy">
+            <span class="absolute top-3 left-3 bg-navy text-white text-[11px] font-bold px-2.5 py-1 rounded-full tracking-wide">EN VENTA</span>
           </div>
-          <div class="p-5">
-            <h3 class="font-bold text-[17px] leading-snug text-navy">Casa Moderna Las Lomas</h3>
-            <p class="text-slate-500 text-sm mt-1"><i class="fa-solid fa-location-dot text-gold mr-1"></i> La Molina, Lima</p>
-            <div class="flex flex-wrap items-center gap-x-4 gap-y-2 sm:gap-5 text-[13px] sm:text-sm text-slate-600 mt-4 border-y border-slate-100 py-3">
+          <div class="p-4 sm:p-5 flex-1 flex flex-col min-w-0">
+            <h3 class="font-bold text-[15px] sm:text-base leading-snug text-navy">Casa Moderna Las Lomas</h3>
+            <p class="text-slate-500 text-xs sm:text-[13px] mt-0.5"><i class="fa-solid fa-location-dot text-gold mr-1"></i> La Molina, Lima</p>
+            <div class="flex flex-col gap-1.5 text-[12px] sm:text-[13px] text-slate-600 mt-3 border-t border-slate-100 pt-3">
               <span><i class="fa-solid fa-bed text-gold mr-1.5"></i>3 Dorm.</span>
               <span><i class="fa-solid fa-bath text-gold mr-1.5"></i>2 Baños</span>
               <span><i class="fa-solid fa-ruler-combined text-gold mr-1.5"></i>220 m²</span>
             </div>
-            <button class="btn-consultar mt-5 w-full inline-flex justify-center items-center gap-2 bg-[#25D366] hover:bg-[#1eb857] active:bg-[#1aa851] text-white font-semibold text-[15px] py-3.5 rounded-xl transition min-h-[48px]">
-              <i class="fa-brands fa-whatsapp text-lg"></i> Consultar por esta propiedad
+            <button class="btn-consultar mt-4 w-full inline-flex justify-center items-center gap-2 bg-[#25D366] hover:bg-[#1eb857] active:bg-[#1aa851] text-white font-semibold text-sm py-2.5 rounded-lg transition min-h-[44px]">
+              <i class="fa-brands fa-whatsapp text-lg"></i> Consultar
             </button>
           </div>
         </article>
 
         <!-- CARD 2 -->
-        <article class="prop-card fade-in bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-card hover:shadow-xl transition min-w-[84%] sm:min-w-[47%] lg:min-w-[31.8%] shrink-0 snap-start" data-operacion="alquiler" data-tipo="departamento" data-titulo="Departamento Céntrico Miraflores">
-          <div class="relative h-44 sm:h-48 overflow-hidden">
-            <img src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?q=80&w=800&auto=format&fit=crop" alt="Departamento Céntrico" class="card-img w-full h-full object-cover" loading="lazy">
-            <span class="absolute top-4 left-4 bg-gold text-white text-xs font-bold px-3 py-1.5 rounded-full tracking-wide">EN ALQUILER</span>
-
+        <article class="prop-card bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-card hover:shadow-xl transition min-w-[88%] sm:min-w-[68%] lg:min-w-[48.5%] shrink-0 snap-start fade-in flex flex-row" data-operacion="alquiler" data-tipo="departamento" data-titulo="Departamento Céntrico Miraflores">
+          <div class="relative w-[38%] sm:w-[42%] shrink-0 overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?q=80&w=800&auto=format&fit=crop" alt="Departamento Céntrico" class="card-img absolute inset-0 w-full h-full object-cover" loading="lazy">
+            <span class="absolute top-3 left-3 bg-gold text-white text-[11px] font-bold px-2.5 py-1 rounded-full tracking-wide">EN ALQUILER</span>
           </div>
-          <div class="p-5">
-            <h3 class="font-bold text-[17px] leading-snug text-navy">Departamento Céntrico Miraflores</h3>
-            <p class="text-slate-500 text-sm mt-1"><i class="fa-solid fa-location-dot text-gold mr-1"></i> Av. Larco 450, Miraflores - Lima</p>
-            <div class="flex flex-wrap items-center gap-x-4 gap-y-2 sm:gap-5 text-[13px] sm:text-sm text-slate-600 mt-4 border-y border-slate-100 py-3">
+          <div class="p-4 sm:p-5 flex-1 flex flex-col min-w-0">
+            <h3 class="font-bold text-[15px] sm:text-base leading-snug text-navy">Departamento Céntrico Miraflores</h3>
+            <p class="text-slate-500 text-xs sm:text-[13px] mt-0.5"><i class="fa-solid fa-location-dot text-gold mr-1"></i> Av. Larco 450, Miraflores - Lima</p>
+            <div class="flex flex-col gap-1.5 text-[12px] sm:text-[13px] text-slate-600 mt-3 border-t border-slate-100 pt-3">
               <span><i class="fa-solid fa-bed text-gold mr-1.5"></i>2 Dorm.</span>
               <span><i class="fa-solid fa-bath text-gold mr-1.5"></i>2 Baños</span>
               <span><i class="fa-solid fa-ruler-combined text-gold mr-1.5"></i>95 m²</span>
             </div>
-            <button class="btn-consultar mt-5 w-full inline-flex justify-center items-center gap-2 bg-[#25D366] hover:bg-[#1eb857] active:bg-[#1aa851] text-white font-semibold text-[15px] py-3.5 rounded-xl transition min-h-[48px]">
-              <i class="fa-brands fa-whatsapp text-lg"></i> Consultar por esta propiedad
+            <button class="btn-consultar mt-4 w-full inline-flex justify-center items-center gap-2 bg-[#25D366] hover:bg-[#1eb857] active:bg-[#1aa851] text-white font-semibold text-sm py-2.5 rounded-lg transition min-h-[44px]">
+              <i class="fa-brands fa-whatsapp text-lg"></i> Consultar
             </button>
           </div>
         </article>
 
         <!-- CARD 3 -->
-        <article class="prop-card fade-in bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-card hover:shadow-xl transition min-w-[84%] sm:min-w-[47%] lg:min-w-[31.8%] shrink-0 snap-start" data-operacion="venta" data-tipo="casa" data-titulo="Casa Familiar con Jardín">
-          <div class="relative h-44 sm:h-48 overflow-hidden">
-            <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=800&auto=format&fit=crop" alt="Casa Familiar" class="card-img w-full h-full object-cover" loading="lazy">
-            <span class="absolute top-4 left-4 bg-navy text-white text-xs font-bold px-3 py-1.5 rounded-full tracking-wide">EN VENTA</span>
-
+        <article class="prop-card bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-card hover:shadow-xl transition min-w-[88%] sm:min-w-[68%] lg:min-w-[48.5%] shrink-0 snap-start fade-in flex flex-row" data-operacion="venta" data-tipo="casa" data-titulo="Casa Familiar con Jardín">
+          <div class="relative w-[38%] sm:w-[42%] shrink-0 overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=800&auto=format&fit=crop" alt="Casa Familiar" class="card-img absolute inset-0 w-full h-full object-cover" loading="lazy">
+            <span class="absolute top-3 left-3 bg-navy text-white text-[11px] font-bold px-2.5 py-1 rounded-full tracking-wide">EN VENTA</span>
           </div>
-          <div class="p-5">
-            <h3 class="font-bold text-[17px] leading-snug text-navy">Casa Familiar con Jardín</h3>
-            <p class="text-slate-500 text-sm mt-1"><i class="fa-solid fa-location-dot text-gold mr-1"></i> Urb. El Prado, Surco - Lima</p>
-            <div class="flex flex-wrap items-center gap-x-4 gap-y-2 sm:gap-5 text-[13px] sm:text-sm text-slate-600 mt-4 border-y border-slate-100 py-3">
+          <div class="p-4 sm:p-5 flex-1 flex flex-col min-w-0">
+            <h3 class="font-bold text-[15px] sm:text-base leading-snug text-navy">Casa Familiar con Jardín</h3>
+            <p class="text-slate-500 text-xs sm:text-[13px] mt-0.5"><i class="fa-solid fa-location-dot text-gold mr-1"></i> Urb. El Prado, Surco - Lima</p>
+            <div class="flex flex-col gap-1.5 text-[12px] sm:text-[13px] text-slate-600 mt-3 border-t border-slate-100 pt-3">
               <span><i class="fa-solid fa-bed text-gold mr-1.5"></i>4 Dorm.</span>
               <span><i class="fa-solid fa-bath text-gold mr-1.5"></i>3 Baños</span>
               <span><i class="fa-solid fa-ruler-combined text-gold mr-1.5"></i>310 m²</span>
             </div>
-            <button class="btn-consultar mt-5 w-full inline-flex justify-center items-center gap-2 bg-[#25D366] hover:bg-[#1eb857] active:bg-[#1aa851] text-white font-semibold text-[15px] py-3.5 rounded-xl transition min-h-[48px]">
-              <i class="fa-brands fa-whatsapp text-lg"></i> Consultar por esta propiedad
+            <button class="btn-consultar mt-4 w-full inline-flex justify-center items-center gap-2 bg-[#25D366] hover:bg-[#1eb857] active:bg-[#1aa851] text-white font-semibold text-sm py-2.5 rounded-lg transition min-h-[44px]">
+              <i class="fa-brands fa-whatsapp text-lg"></i> Consultar
             </button>
           </div>
         </article>
 
         <!-- CARD 4 -->
-        <article class="prop-card fade-in bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-card hover:shadow-xl transition min-w-[84%] sm:min-w-[47%] lg:min-w-[31.8%] shrink-0 snap-start" data-operacion="venta" data-tipo="departamento" data-titulo="Depa Nuevo con Vista Panorámica">
-          <div class="relative h-44 sm:h-48 overflow-hidden">
-            <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?q=80&w=800&auto=format&fit=crop" alt="Departamento vista panorámica" class="card-img w-full h-full object-cover" loading="lazy">
-            <span class="absolute top-4 left-4 bg-navy text-white text-xs font-bold px-3 py-1.5 rounded-full tracking-wide">EN VENTA</span>
-
+        <article class="prop-card bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-card hover:shadow-xl transition min-w-[88%] sm:min-w-[68%] lg:min-w-[48.5%] shrink-0 snap-start fade-in flex flex-row" data-operacion="venta" data-tipo="departamento" data-titulo="Depa Nuevo con Vista Panorámica">
+          <div class="relative w-[38%] sm:w-[42%] shrink-0 overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?q=80&w=800&auto=format&fit=crop" alt="Departamento vista panorámica" class="card-img absolute inset-0 w-full h-full object-cover" loading="lazy">
+            <span class="absolute top-3 left-3 bg-navy text-white text-[11px] font-bold px-2.5 py-1 rounded-full tracking-wide">EN VENTA</span>
           </div>
-          <div class="p-5">
-            <h3 class="font-bold text-[17px] leading-snug text-navy">Depa Nuevo con Vista Panorámica</h3>
-            <p class="text-slate-500 text-sm mt-1"><i class="fa-solid fa-location-dot text-gold mr-1"></i> San Isidro, Centro Financiero - Lima</p>
-            <div class="flex flex-wrap items-center gap-x-4 gap-y-2 sm:gap-5 text-[13px] sm:text-sm text-slate-600 mt-4 border-y border-slate-100 py-3">
+          <div class="p-4 sm:p-5 flex-1 flex flex-col min-w-0">
+            <h3 class="font-bold text-[15px] sm:text-base leading-snug text-navy">Depa Nuevo con Vista Panorámica</h3>
+            <p class="text-slate-500 text-xs sm:text-[13px] mt-0.5"><i class="fa-solid fa-location-dot text-gold mr-1"></i> San Isidro, Centro Financiero - Lima</p>
+            <div class="flex flex-col gap-1.5 text-[12px] sm:text-[13px] text-slate-600 mt-3 border-t border-slate-100 pt-3">
               <span><i class="fa-solid fa-bed text-gold mr-1.5"></i>3 Dorm.</span>
               <span><i class="fa-solid fa-bath text-gold mr-1.5"></i>2 Baños</span>
               <span><i class="fa-solid fa-ruler-combined text-gold mr-1.5"></i>110 m²</span>
             </div>
-            <button class="btn-consultar mt-5 w-full inline-flex justify-center items-center gap-2 bg-[#25D366] hover:bg-[#1eb857] active:bg-[#1aa851] text-white font-semibold text-[15px] py-3.5 rounded-xl transition min-h-[48px]">
-              <i class="fa-brands fa-whatsapp text-lg"></i> Consultar por esta propiedad
+            <button class="btn-consultar mt-4 w-full inline-flex justify-center items-center gap-2 bg-[#25D366] hover:bg-[#1eb857] active:bg-[#1aa851] text-white font-semibold text-sm py-2.5 rounded-lg transition min-h-[44px]">
+              <i class="fa-brands fa-whatsapp text-lg"></i> Consultar
             </button>
           </div>
         </article>
 
         <!-- CARD 5 -->
-        <article class="prop-card fade-in bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-card hover:shadow-xl transition min-w-[84%] sm:min-w-[47%] lg:min-w-[31.8%] shrink-0 snap-start" data-operacion="venta" data-tipo="terreno" data-titulo="Terreno Plano 500m²">
-          <div class="relative h-44 sm:h-48 overflow-hidden">
-            <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?q=80&w=800&auto=format&fit=crop" alt="Terreno" class="card-img w-full h-full object-cover" loading="lazy">
-            <span class="absolute top-4 left-4 bg-navy text-white text-xs font-bold px-3 py-1.5 rounded-full tracking-wide">EN VENTA</span>
-
+        <article class="prop-card bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-card hover:shadow-xl transition min-w-[88%] sm:min-w-[68%] lg:min-w-[48.5%] shrink-0 snap-start fade-in flex flex-row" data-operacion="venta" data-tipo="terreno" data-titulo="Terreno Plano 500m²">
+          <div class="relative w-[38%] sm:w-[42%] shrink-0 overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?q=80&w=800&auto=format&fit=crop" alt="Terreno" class="card-img absolute inset-0 w-full h-full object-cover" loading="lazy">
+            <span class="absolute top-3 left-3 bg-navy text-white text-[11px] font-bold px-2.5 py-1 rounded-full tracking-wide">EN VENTA</span>
           </div>
-          <div class="p-5">
-            <h3 class="font-bold text-[17px] leading-snug text-navy">Terreno Plano 500 m²</h3>
-            <p class="text-slate-500 text-sm mt-1"><i class="fa-solid fa-location-dot text-gold mr-1"></i> Lurín, Lima Sur</p>
-            <div class="flex flex-wrap items-center gap-x-4 gap-y-2 sm:gap-5 text-[13px] sm:text-sm text-slate-600 mt-4 border-y border-slate-100 py-3">
+          <div class="p-4 sm:p-5 flex-1 flex flex-col min-w-0">
+            <h3 class="font-bold text-[15px] sm:text-base leading-snug text-navy">Terreno Plano 500 m²</h3>
+            <p class="text-slate-500 text-xs sm:text-[13px] mt-0.5"><i class="fa-solid fa-location-dot text-gold mr-1"></i> Lurín, Lima Sur</p>
+            <div class="flex flex-col gap-1.5 text-[12px] sm:text-[13px] text-slate-600 mt-3 border-t border-slate-100 pt-3">
               <span><i class="fa-solid fa-vector-square text-gold mr-1.5"></i>Saneado</span>
               <span><i class="fa-solid fa-road text-gold mr-1.5"></i>Doble acceso</span>
               <span><i class="fa-solid fa-ruler-combined text-gold mr-1.5"></i>500 m²</span>
             </div>
-            <button class="btn-consultar mt-5 w-full inline-flex justify-center items-center gap-2 bg-[#25D366] hover:bg-[#1eb857] active:bg-[#1aa851] text-white font-semibold text-[15px] py-3.5 rounded-xl transition min-h-[48px]">
-              <i class="fa-brands fa-whatsapp text-lg"></i> Consultar por esta propiedad
+            <button class="btn-consultar mt-4 w-full inline-flex justify-center items-center gap-2 bg-[#25D366] hover:bg-[#1eb857] active:bg-[#1aa851] text-white font-semibold text-sm py-2.5 rounded-lg transition min-h-[44px]">
+              <i class="fa-brands fa-whatsapp text-lg"></i> Consultar
             </button>
           </div>
         </article>
 
         <!-- CARD 6 -->
-        <article class="prop-card fade-in bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-card hover:shadow-xl transition min-w-[84%] sm:min-w-[47%] lg:min-w-[31.8%] shrink-0 snap-start" data-operacion="alquiler" data-tipo="casa" data-titulo="Casa Acogedora Amoblada">
-          <div class="relative h-44 sm:h-48 overflow-hidden">
-            <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=800&auto=format&fit=crop" alt="Casa en alquiler" class="card-img w-full h-full object-cover" loading="lazy">
-            <span class="absolute top-4 left-4 bg-gold text-white text-xs font-bold px-3 py-1.5 rounded-full tracking-wide">EN ALQUILER</span>
-
+        <article class="prop-card bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-card hover:shadow-xl transition min-w-[88%] sm:min-w-[68%] lg:min-w-[48.5%] shrink-0 snap-start fade-in flex flex-row" data-operacion="alquiler" data-tipo="casa" data-titulo="Casa Acogedora Amoblada">
+          <div class="relative w-[38%] sm:w-[42%] shrink-0 overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=800&auto=format&fit=crop" alt="Casa en alquiler" class="card-img absolute inset-0 w-full h-full object-cover" loading="lazy">
+            <span class="absolute top-3 left-3 bg-gold text-white text-[11px] font-bold px-2.5 py-1 rounded-full tracking-wide">EN ALQUILER</span>
           </div>
-          <div class="p-5">
-            <h3 class="font-bold text-[17px] leading-snug text-navy">Casa Acogedora Amoblada</h3>
-            <p class="text-slate-500 text-sm mt-1"><i class="fa-solid fa-location-dot text-gold mr-1"></i> Jesús María, Lima</p>
-            <div class="flex flex-wrap items-center gap-x-4 gap-y-2 sm:gap-5 text-[13px] sm:text-sm text-slate-600 mt-4 border-y border-slate-100 py-3">
+          <div class="p-4 sm:p-5 flex-1 flex flex-col min-w-0">
+            <h3 class="font-bold text-[15px] sm:text-base leading-snug text-navy">Casa Acogedora Amoblada</h3>
+            <p class="text-slate-500 text-xs sm:text-[13px] mt-0.5"><i class="fa-solid fa-location-dot text-gold mr-1"></i> Jesús María, Lima</p>
+            <div class="flex flex-col gap-1.5 text-[12px] sm:text-[13px] text-slate-600 mt-3 border-t border-slate-100 pt-3">
               <span><i class="fa-solid fa-bed text-gold mr-1.5"></i>3 Dorm.</span>
               <span><i class="fa-solid fa-bath text-gold mr-1.5"></i>2 Baños</span>
               <span><i class="fa-solid fa-ruler-combined text-gold mr-1.5"></i>180 m²</span>
             </div>
-            <button class="btn-consultar mt-5 w-full inline-flex justify-center items-center gap-2 bg-[#25D366] hover:bg-[#1eb857] active:bg-[#1aa851] text-white font-semibold text-[15px] py-3.5 rounded-xl transition min-h-[48px]">
-              <i class="fa-brands fa-whatsapp text-lg"></i> Consultar por esta propiedad
+            <button class="btn-consultar mt-4 w-full inline-flex justify-center items-center gap-2 bg-[#25D366] hover:bg-[#1eb857] active:bg-[#1aa851] text-white font-semibold text-sm py-2.5 rounded-lg transition min-h-[44px]">
+              <i class="fa-brands fa-whatsapp text-lg"></i> Consultar
             </button>
           </div>
         </article>
@@ -569,7 +563,10 @@
     const btnPrev = document.getElementById("prop-prev");
     const btnNext = document.getElementById("prop-next");
     const progress = document.getElementById("prop-progress");
-    const paso = () => (track.querySelector(".prop-card:not(.hidden)")?.offsetWidth || 320) + 16;
+    const paso = () => {
+      const gap = parseFloat(getComputedStyle(track).columnGap) || 16;
+      return (track.querySelector(".prop-card:not(.hidden)")?.offsetWidth || 320) + gap;
+    };
     btnPrev?.addEventListener("click", () => track.scrollBy({ left: -paso(), behavior: "smooth" }));
     btnNext?.addEventListener("click", () => track.scrollBy({ left: paso(), behavior: "smooth" }));
     // Estado flechas + barra de progreso según scroll
@@ -594,6 +591,11 @@
     });
     track.addEventListener("pointermove", (e) => { if (down) track.scrollLeft = startL - (e.clientX - startX); });
     ["pointerup", "pointercancel", "pointerleave"].forEach(ev => track.addEventListener(ev, () => { down = false; track.classList.remove("dragging"); }));
+    // Teclado: flechas ← → cuando el carrusel tiene foco
+    track.addEventListener("keydown", (e) => {
+      if (e.key === "ArrowRight") { e.preventDefault(); track.scrollBy({ left: paso(), behavior: "smooth" }); }
+      if (e.key === "ArrowLeft") { e.preventDefault(); track.scrollBy({ left: -paso(), behavior: "smooth" }); }
+    });
     syncCarrusel();
 
     // 5. Botón "Consultar por esta propiedad" → WhatsApp prellenado
