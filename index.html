@@ -61,11 +61,17 @@
     /* Botón WhatsApp flotante */
     .wa-float { animation: pulseWa 2.2s infinite; }
     @keyframes pulseWa { 0%{box-shadow:0 0 0 0 rgba(37,211,102,.5)} 70%{box-shadow:0 0 0 16px rgba(37,211,102,0)} 100%{box-shadow:0 0 0 0 rgba(37,211,102,0)} }
-    /* Carrusel horizontal de propiedades: ocupa 1 sola fila */
-    #grid-propiedades { scrollbar-width: thin; scrollbar-color: #d97706 #e2e8f0; }
+    /* Carrusel horizontal de propiedades: edge-to-edge, 1 sola fila */
+    #grid-propiedades { scrollbar-width: thin; scrollbar-color: #d97706 #e2e8f0; scroll-padding-left: 1rem; -webkit-overflow-scrolling: touch; }
     #grid-propiedades::-webkit-scrollbar { height: 8px; }
     #grid-propiedades::-webkit-scrollbar-track { background: #f1f5f9; border-radius: 99px; }
     #grid-propiedades::-webkit-scrollbar-thumb { background: #d97706; border-radius: 99px; }
+    #grid-propiedades.dragging { scroll-snap-type: none; cursor: grabbing; }
+    #grid-propiedades.dragging img { pointer-events: none; }
+    @media (max-width: 639px) {
+      #grid-propiedades { scrollbar-width: none; }
+      #grid-propiedades::-webkit-scrollbar { display: none; }
+    }
   </style>
 </head>
 
@@ -171,15 +177,18 @@
       </div>
       <p id="contador-prop" class="text-sm text-slate-500 mt-4"></p>
 
-      <!-- Tira horizontal compacta (1 fila con scroll) + flechas -->
-      <div class="flex items-center justify-between mt-5">
-        <p class="text-xs sm:text-sm text-slate-400 font-medium"><i class="fa-solid fa-arrows-left-right mr-1.5"></i>Desliza para ver más</p>
-        <div class="flex gap-2">
-          <button id="prop-prev" aria-label="Anterior" class="w-10 h-10 rounded-full border border-slate-300 text-navy hover:bg-navy hover:text-white hover:border-navy transition flex items-center justify-center"><i class="fa-solid fa-chevron-left"></i></button>
-          <button id="prop-next" aria-label="Siguiente" class="w-10 h-10 rounded-full border border-slate-300 text-navy hover:bg-navy hover:text-white hover:border-navy transition flex items-center justify-center"><i class="fa-solid fa-chevron-right"></i></button>
+      <!-- Tira horizontal full-bleed (pegada al borde) + flechas -->
+      <div class="flex items-center justify-between mt-5 gap-3">
+        <p class="text-xs sm:text-sm text-slate-400 font-medium"><i class="fa-solid fa-hand-pointer mr-1.5 sm:hidden"></i><i class="fa-solid fa-arrows-left-right mr-1.5 hidden sm:inline"></i><span class="sm:hidden">Desliza</span><span class="hidden sm:inline">Desliza o arrastra para ver más</span></p>
+        <div class="flex gap-2 shrink-0">
+          <button id="prop-prev" aria-label="Anterior" class="w-10 h-10 rounded-full border border-slate-300 text-navy hover:bg-navy hover:text-white hover:border-navy transition flex items-center justify-center disabled:opacity-30 disabled:pointer-events-none"><i class="fa-solid fa-chevron-left"></i></button>
+          <button id="prop-next" aria-label="Siguiente" class="w-10 h-10 rounded-full border border-slate-300 text-navy hover:bg-navy hover:text-white hover:border-navy transition flex items-center justify-center disabled:opacity-30 disabled:pointer-events-none"><i class="fa-solid fa-chevron-right"></i></button>
         </div>
       </div>
-      <div id="grid-propiedades" class="flex gap-4 sm:gap-5 mt-3 overflow-x-auto pb-4 snap-x snap-mandatory scroll-smooth">
+    </div><!-- /container -->
+    <!-- Carrusel edge-to-edge: al margen de la pantalla -->
+    <div class="mt-3 pl-4 sm:pl-6 lg:pl-[max(1.5rem,calc((100vw-80rem)/2+2rem))]">
+      <div id="grid-propiedades" class="flex gap-4 sm:gap-5 overflow-x-auto pb-4 pr-4 sm:pr-8 snap-x snap-mandatory scroll-smooth cursor-grab select-none">
 
         <!-- CARD 1 -->
         <article class="prop-card fade-in bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-card hover:shadow-xl transition min-w-[84%] sm:min-w-[47%] lg:min-w-[31.8%] shrink-0 snap-start" data-operacion="venta" data-tipo="casa" data-titulo="Casa Moderna Las Lomas">
@@ -307,8 +316,16 @@
           </div>
         </article>
 
-      </div>
+      </div><!-- /track carrusel -->
+    </div><!-- /full-bleed al margen -->
 
+    <!-- Barra de progreso del carrusel -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-1">
+      <div class="h-1 bg-slate-100 rounded-full overflow-hidden">
+        <div id="prop-progress" class="h-full bg-gold rounded-full transition-all duration-300" style="width:25%"></div>
+      </div>
+    </div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <!-- Mensaje sin resultados -->
       <div id="sin-resultados" class="hidden text-center py-14">
         <i class="fa-solid fa-magnifying-glass text-4xl text-slate-300"></i>
@@ -532,6 +549,10 @@
       });
       contador.textContent = visibles ? `Mostrando ${visibles} ${visibles === 1 ? "propiedad" : "propiedades"}` : "";
       sinRes.classList.toggle("hidden", visibles > 0);
+      // Al filtrar: volver al inicio del carrusel y resincronizar flechas/progreso
+      const t = document.getElementById("grid-propiedades");
+      if (t) t.scrollTo({ left: 0 });
+      try { syncCarrusel(); } catch (_) {}
     }
     document.querySelectorAll("#filtros-operacion .filter-btn").forEach(b => b.addEventListener("click", () => {
       document.querySelectorAll("#filtros-operacion .filter-btn").forEach(x => x.classList.remove("active"));
@@ -543,11 +564,37 @@
     }));
     aplicarFiltros();
 
-    // 4b. Flechas del carrusel horizontal (scroll por tarjeta)
+    // 4b. Flechas + progreso + arrastre del carrusel edge-to-edge
     const track = document.getElementById("grid-propiedades");
+    const btnPrev = document.getElementById("prop-prev");
+    const btnNext = document.getElementById("prop-next");
+    const progress = document.getElementById("prop-progress");
     const paso = () => (track.querySelector(".prop-card:not(.hidden)")?.offsetWidth || 320) + 16;
-    document.getElementById("prop-prev")?.addEventListener("click", () => track.scrollBy({ left: -paso(), behavior: "smooth" }));
-    document.getElementById("prop-next")?.addEventListener("click", () => track.scrollBy({ left: paso(), behavior: "smooth" }));
+    btnPrev?.addEventListener("click", () => track.scrollBy({ left: -paso(), behavior: "smooth" }));
+    btnNext?.addEventListener("click", () => track.scrollBy({ left: paso(), behavior: "smooth" }));
+    // Estado flechas + barra de progreso según scroll
+    function syncCarrusel() {
+      const max = track.scrollWidth - track.clientWidth;
+      const x = track.scrollLeft;
+      if (btnPrev) btnPrev.disabled = x <= 8;
+      if (btnNext) btnNext.disabled = x >= max - 8;
+      if (progress) {
+        const pct = max > 0 ? (x / max) * 75 + 25 : 100;
+        progress.style.width = pct + "%";
+      }
+    }
+    track.addEventListener("scroll", syncCarrusel, { passive: true });
+    addEventListener("resize", syncCarrusel);
+    // Arrastre con mouse (desktop): click-arrastrar como apps móviles
+    let down = false, startX = 0, startL = 0;
+    track.addEventListener("pointerdown", (e) => {
+      if (e.pointerType !== "mouse") return;
+      down = true; startX = e.clientX; startL = track.scrollLeft;
+      track.classList.add("dragging"); track.setPointerCapture(e.pointerId);
+    });
+    track.addEventListener("pointermove", (e) => { if (down) track.scrollLeft = startL - (e.clientX - startX); });
+    ["pointerup", "pointercancel", "pointerleave"].forEach(ev => track.addEventListener(ev, () => { down = false; track.classList.remove("dragging"); }));
+    syncCarrusel();
 
     // 5. Botón "Consultar por esta propiedad" → WhatsApp prellenado
     document.querySelectorAll(".btn-consultar").forEach(btn => btn.addEventListener("click", () => {
