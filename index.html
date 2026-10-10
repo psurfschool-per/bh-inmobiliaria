@@ -313,14 +313,6 @@
       </div><!-- /track carrusel -->
     </div><!-- /full-bleed al margen -->
 
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <!-- Mensaje sin resultados -->
-      <div id="sin-resultados" class="hidden text-center py-14">
-        <i class="fa-solid fa-magnifying-glass text-4xl text-slate-300"></i>
-        <p class="mt-4 font-semibold text-navy">No hay propiedades con ese filtro por ahora.</p>
-        <p class="text-slate-500 text-sm">Escríbenos por WhatsApp y te avisamos cuando llegue una similar.</p>
-      </div>
-    </div>
   </section>
 
   <!-- ================= CAPTACIÓN ================= -->
@@ -524,7 +516,6 @@
     let filtroOp = "todas", filtroTipo = "todos";
     const cards = [...document.querySelectorAll(".prop-card")];
     const contador = document.getElementById("contador-prop");
-    const sinRes = document.getElementById("sin-resultados");
 
     function aplicarFiltros() {
       let visibles = 0;
@@ -536,7 +527,6 @@
         if (show) { visibles++; c.classList.remove("fade-in"); void c.offsetWidth; c.classList.add("fade-in"); }
       });
       contador.textContent = visibles ? `Mostrando ${visibles} ${visibles === 1 ? "propiedad" : "propiedades"}` : "";
-      sinRes.classList.toggle("hidden", visibles > 0);
       // Al filtrar: volver al inicio del carrusel y resincronizar flechas/progreso
       const t = document.getElementById("grid-propiedades");
       if (t) t.scrollTo({ left: 0 });
