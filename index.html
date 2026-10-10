@@ -313,12 +313,6 @@
       </div><!-- /track carrusel -->
     </div><!-- /full-bleed al margen -->
 
-    <!-- Barra de progreso del carrusel -->
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-1">
-      <div class="h-1 bg-slate-100 rounded-full overflow-hidden">
-        <div id="prop-progress" class="h-full bg-gold rounded-full transition-all duration-300" style="width:25%"></div>
-      </div>
-    </div>
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <!-- Mensaje sin resultados -->
       <div id="sin-resultados" class="hidden text-center py-14">
@@ -562,7 +556,6 @@
     const track = document.getElementById("grid-propiedades");
     const btnPrev = document.getElementById("prop-prev");
     const btnNext = document.getElementById("prop-next");
-    const progress = document.getElementById("prop-progress");
     const paso = () => {
       const gap = parseFloat(getComputedStyle(track).columnGap) || 16;
       return (track.querySelector(".prop-card:not(.hidden)")?.offsetWidth || 320) + gap;
@@ -575,10 +568,6 @@
       const x = track.scrollLeft;
       if (btnPrev) btnPrev.disabled = x <= 8;
       if (btnNext) btnNext.disabled = x >= max - 8;
-      if (progress) {
-        const pct = max > 0 ? (x / max) * 75 + 25 : 100;
-        progress.style.width = pct + "%";
-      }
     }
     track.addEventListener("scroll", syncCarrusel, { passive: true });
     addEventListener("resize", syncCarrusel);
