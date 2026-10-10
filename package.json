@@ -1,7 +1,7 @@
 {
   "name": "bh-inmobiliaria",
   "version": "1.0.0",
-  "description": "BH Inmobiliaria - Berardina Hernandez, Lima Peru. Landing inmobiliaria.",
+  "description": "BH Inmobiliaria, Lima Peru. Landing inmobiliaria.",
   "private": true,
   "scripts": {
     "start": "node server.js"

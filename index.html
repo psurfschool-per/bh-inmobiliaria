@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Berardina Hernandez - BH Inmobiliaria | Bienes Raíces en Lima, Perú</title>
-  <meta name="description" content="Berardina Hernandez - BH Inmobiliaria en Lima, Perú. Venta y alquiler de departamentos, casas y terrenos. Valoración gratuita por WhatsApp." />
+  <title>BH Inmobiliaria | Bienes Raíces en Lima, Perú</title>
+  <meta name="description" content="BH Inmobiliaria en Lima, Perú. Venta y alquiler de departamentos, casas y terrenos. Valoración gratuita por WhatsApp." />
 
   <!-- Google Fonts: Montserrat (títulos) + Inter (texto) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -61,6 +61,11 @@
     /* Botón WhatsApp flotante */
     .wa-float { animation: pulseWa 2.2s infinite; }
     @keyframes pulseWa { 0%{box-shadow:0 0 0 0 rgba(37,211,102,.5)} 70%{box-shadow:0 0 0 16px rgba(37,211,102,0)} 100%{box-shadow:0 0 0 0 rgba(37,211,102,0)} }
+    /* Carrusel horizontal de propiedades: ocupa 1 sola fila */
+    #grid-propiedades { scrollbar-width: thin; scrollbar-color: #d97706 #e2e8f0; }
+    #grid-propiedades::-webkit-scrollbar { height: 8px; }
+    #grid-propiedades::-webkit-scrollbar-track { background: #f1f5f9; border-radius: 99px; }
+    #grid-propiedades::-webkit-scrollbar-thumb { background: #d97706; border-radius: 99px; }
   </style>
 </head>
 
@@ -73,8 +78,8 @@
       <a href="#inicio" class="flex items-center gap-2 sm:gap-3 min-w-0">
         <div class="w-9 h-9 sm:w-10 sm:h-10 shrink-0 rounded-xl bg-gold flex items-center justify-center text-navy font-heading font-800 font-extrabold text-lg sm:text-xl">BH</div>
         <div class="leading-tight min-w-0">
-          <p class="text-white font-heading font-bold text-[15px] sm:text-[17px] truncate">Berardina Hernandez</p>
-          <p class="text-gold-light text-[11px] sm:text-xs tracking-wide truncate">BH Inmobiliaria • Lima, Perú</p>
+          <p class="text-white font-heading font-bold text-[15px] sm:text-[17px] truncate">BH Inmobiliaria</p>
+          <p class="text-gold-light text-[11px] sm:text-xs tracking-wide truncate">Bienes Raíces • Lima, Perú</p>
         </div>
       </a>
       <!-- Menú desktop -->
@@ -82,7 +87,7 @@
         <a href="#inicio" class="hover:text-gold-light transition">Inicio</a>
         <a href="#propiedades" class="hover:text-gold-light transition">Propiedades</a>
         <a href="#vender" class="hover:text-gold-light transition">Vender mi Propiedad</a>
-        <a href="#sobre-mi" class="hover:text-gold-light transition">Sobre Mí</a>
+        <a href="#sobre-mi" class="hover:text-gold-light transition">Nosotros</a>
         <a href="#contacto" class="hover:text-gold-light transition">Contacto</a>
       </div>
       <div class="hidden md:block">
@@ -100,7 +105,7 @@
       <a href="#inicio" class="hover:text-gold-light">Inicio</a>
       <a href="#propiedades" class="hover:text-gold-light">Propiedades</a>
       <a href="#vender" class="hover:text-gold-light">Vender mi Propiedad</a>
-      <a href="#sobre-mi" class="hover:text-gold-light">Sobre Mí</a>
+      <a href="#sobre-mi" class="hover:text-gold-light">Nosotros</a>
       <a href="#contacto" class="hover:text-gold-light">Contacto</a>
       <a data-wa-general href="#" target="_blank" class="mt-2 inline-flex justify-center items-center gap-2 bg-[#25D366] text-white font-semibold px-5 py-3 rounded-full">
         <i class="fa-brands fa-whatsapp"></i> WhatsApp Directo
@@ -113,7 +118,7 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-20 w-full">
       <div class="max-w-3xl">
         <span class="inline-flex flex-wrap items-center gap-2 bg-white/10 border border-white/20 text-gold-soft text-xs sm:text-sm font-semibold px-3 sm:px-4 py-1.5 rounded-full backdrop-blur">
-          <i class="fa-solid fa-key text-gold-light"></i> Berardina Hernandez • Asesora inmobiliaria en Lima
+          <i class="fa-solid fa-key text-gold-light"></i> BH Inmobiliaria • Lima, Perú
         </span>
         <h1 class="text-white font-extrabold text-[2rem] leading-[1.12] sm:text-5xl lg:text-[3.6rem] sm:leading-[1.08] mt-4 sm:mt-5">
           Encuentra tu hogar ideal o vende tu propiedad <span class="text-gold-light">con expertos</span>
@@ -166,18 +171,25 @@
       </div>
       <p id="contador-prop" class="text-sm text-slate-500 mt-4"></p>
 
-      <!-- Grid 1 col móvil / 2 tablet / 3 desktop -->
-      <div id="grid-propiedades" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-7 mt-6">
+      <!-- Tira horizontal compacta (1 fila con scroll) + flechas -->
+      <div class="flex items-center justify-between mt-5">
+        <p class="text-xs sm:text-sm text-slate-400 font-medium"><i class="fa-solid fa-arrows-left-right mr-1.5"></i>Desliza para ver más</p>
+        <div class="flex gap-2">
+          <button id="prop-prev" aria-label="Anterior" class="w-10 h-10 rounded-full border border-slate-300 text-navy hover:bg-navy hover:text-white hover:border-navy transition flex items-center justify-center"><i class="fa-solid fa-chevron-left"></i></button>
+          <button id="prop-next" aria-label="Siguiente" class="w-10 h-10 rounded-full border border-slate-300 text-navy hover:bg-navy hover:text-white hover:border-navy transition flex items-center justify-center"><i class="fa-solid fa-chevron-right"></i></button>
+        </div>
+      </div>
+      <div id="grid-propiedades" class="flex gap-4 sm:gap-5 mt-3 overflow-x-auto pb-4 snap-x snap-mandatory scroll-smooth">
 
         <!-- CARD 1 -->
-        <article class="prop-card fade-in bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-card hover:-translate-y-1 hover:shadow-xl transition" data-operacion="venta" data-tipo="casa" data-titulo="Casa Moderna Las Lomas">
-          <div class="relative h-52 sm:h-60 overflow-hidden">
+        <article class="prop-card fade-in bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-card hover:shadow-xl transition min-w-[84%] sm:min-w-[47%] lg:min-w-[31.8%] shrink-0 snap-start" data-operacion="venta" data-tipo="casa" data-titulo="Casa Moderna Las Lomas">
+          <div class="relative h-44 sm:h-48 overflow-hidden">
             <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=800&auto=format&fit=crop" alt="Casa Moderna Las Lomas" class="card-img w-full h-full object-cover" loading="lazy">
             <span class="absolute top-4 left-4 bg-navy text-white text-xs font-bold px-3 py-1.5 rounded-full tracking-wide">EN VENTA</span>
 
           </div>
-          <div class="p-6">
-            <h3 class="font-bold text-lg text-navy">Casa Moderna Las Lomas</h3>
+          <div class="p-5">
+            <h3 class="font-bold text-[17px] leading-snug text-navy">Casa Moderna Las Lomas</h3>
             <p class="text-slate-500 text-sm mt-1"><i class="fa-solid fa-location-dot text-gold mr-1"></i> La Molina, Lima</p>
             <div class="flex flex-wrap items-center gap-x-4 gap-y-2 sm:gap-5 text-[13px] sm:text-sm text-slate-600 mt-4 border-y border-slate-100 py-3">
               <span><i class="fa-solid fa-bed text-gold mr-1.5"></i>3 Dorm.</span>
@@ -191,14 +203,14 @@
         </article>
 
         <!-- CARD 2 -->
-        <article class="prop-card fade-in bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-card hover:-translate-y-1 hover:shadow-xl transition" data-operacion="alquiler" data-tipo="departamento" data-titulo="Departamento Céntrico Miraflores">
-          <div class="relative h-52 sm:h-60 overflow-hidden">
+        <article class="prop-card fade-in bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-card hover:shadow-xl transition min-w-[84%] sm:min-w-[47%] lg:min-w-[31.8%] shrink-0 snap-start" data-operacion="alquiler" data-tipo="departamento" data-titulo="Departamento Céntrico Miraflores">
+          <div class="relative h-44 sm:h-48 overflow-hidden">
             <img src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?q=80&w=800&auto=format&fit=crop" alt="Departamento Céntrico" class="card-img w-full h-full object-cover" loading="lazy">
             <span class="absolute top-4 left-4 bg-gold text-white text-xs font-bold px-3 py-1.5 rounded-full tracking-wide">EN ALQUILER</span>
 
           </div>
-          <div class="p-6">
-            <h3 class="font-bold text-lg text-navy">Departamento Céntrico Miraflores</h3>
+          <div class="p-5">
+            <h3 class="font-bold text-[17px] leading-snug text-navy">Departamento Céntrico Miraflores</h3>
             <p class="text-slate-500 text-sm mt-1"><i class="fa-solid fa-location-dot text-gold mr-1"></i> Av. Larco 450, Miraflores - Lima</p>
             <div class="flex flex-wrap items-center gap-x-4 gap-y-2 sm:gap-5 text-[13px] sm:text-sm text-slate-600 mt-4 border-y border-slate-100 py-3">
               <span><i class="fa-solid fa-bed text-gold mr-1.5"></i>2 Dorm.</span>
@@ -212,14 +224,14 @@
         </article>
 
         <!-- CARD 3 -->
-        <article class="prop-card fade-in bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-card hover:-translate-y-1 hover:shadow-xl transition" data-operacion="venta" data-tipo="casa" data-titulo="Casa Familiar con Jardín">
-          <div class="relative h-52 sm:h-60 overflow-hidden">
+        <article class="prop-card fade-in bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-card hover:shadow-xl transition min-w-[84%] sm:min-w-[47%] lg:min-w-[31.8%] shrink-0 snap-start" data-operacion="venta" data-tipo="casa" data-titulo="Casa Familiar con Jardín">
+          <div class="relative h-44 sm:h-48 overflow-hidden">
             <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=800&auto=format&fit=crop" alt="Casa Familiar" class="card-img w-full h-full object-cover" loading="lazy">
             <span class="absolute top-4 left-4 bg-navy text-white text-xs font-bold px-3 py-1.5 rounded-full tracking-wide">EN VENTA</span>
 
           </div>
-          <div class="p-6">
-            <h3 class="font-bold text-lg text-navy">Casa Familiar con Jardín</h3>
+          <div class="p-5">
+            <h3 class="font-bold text-[17px] leading-snug text-navy">Casa Familiar con Jardín</h3>
             <p class="text-slate-500 text-sm mt-1"><i class="fa-solid fa-location-dot text-gold mr-1"></i> Urb. El Prado, Surco - Lima</p>
             <div class="flex flex-wrap items-center gap-x-4 gap-y-2 sm:gap-5 text-[13px] sm:text-sm text-slate-600 mt-4 border-y border-slate-100 py-3">
               <span><i class="fa-solid fa-bed text-gold mr-1.5"></i>4 Dorm.</span>
@@ -233,14 +245,14 @@
         </article>
 
         <!-- CARD 4 -->
-        <article class="prop-card fade-in bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-card hover:-translate-y-1 hover:shadow-xl transition" data-operacion="venta" data-tipo="departamento" data-titulo="Depa Nuevo con Vista Panorámica">
-          <div class="relative h-52 sm:h-60 overflow-hidden">
+        <article class="prop-card fade-in bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-card hover:shadow-xl transition min-w-[84%] sm:min-w-[47%] lg:min-w-[31.8%] shrink-0 snap-start" data-operacion="venta" data-tipo="departamento" data-titulo="Depa Nuevo con Vista Panorámica">
+          <div class="relative h-44 sm:h-48 overflow-hidden">
             <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?q=80&w=800&auto=format&fit=crop" alt="Departamento vista panorámica" class="card-img w-full h-full object-cover" loading="lazy">
             <span class="absolute top-4 left-4 bg-navy text-white text-xs font-bold px-3 py-1.5 rounded-full tracking-wide">EN VENTA</span>
 
           </div>
-          <div class="p-6">
-            <h3 class="font-bold text-lg text-navy">Depa Nuevo con Vista Panorámica</h3>
+          <div class="p-5">
+            <h3 class="font-bold text-[17px] leading-snug text-navy">Depa Nuevo con Vista Panorámica</h3>
             <p class="text-slate-500 text-sm mt-1"><i class="fa-solid fa-location-dot text-gold mr-1"></i> San Isidro, Centro Financiero - Lima</p>
             <div class="flex flex-wrap items-center gap-x-4 gap-y-2 sm:gap-5 text-[13px] sm:text-sm text-slate-600 mt-4 border-y border-slate-100 py-3">
               <span><i class="fa-solid fa-bed text-gold mr-1.5"></i>3 Dorm.</span>
@@ -254,14 +266,14 @@
         </article>
 
         <!-- CARD 5 -->
-        <article class="prop-card fade-in bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-card hover:-translate-y-1 hover:shadow-xl transition" data-operacion="venta" data-tipo="terreno" data-titulo="Terreno Plano 500m²">
-          <div class="relative h-52 sm:h-60 overflow-hidden">
+        <article class="prop-card fade-in bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-card hover:shadow-xl transition min-w-[84%] sm:min-w-[47%] lg:min-w-[31.8%] shrink-0 snap-start" data-operacion="venta" data-tipo="terreno" data-titulo="Terreno Plano 500m²">
+          <div class="relative h-44 sm:h-48 overflow-hidden">
             <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?q=80&w=800&auto=format&fit=crop" alt="Terreno" class="card-img w-full h-full object-cover" loading="lazy">
             <span class="absolute top-4 left-4 bg-navy text-white text-xs font-bold px-3 py-1.5 rounded-full tracking-wide">EN VENTA</span>
 
           </div>
-          <div class="p-6">
-            <h3 class="font-bold text-lg text-navy">Terreno Plano 500 m²</h3>
+          <div class="p-5">
+            <h3 class="font-bold text-[17px] leading-snug text-navy">Terreno Plano 500 m²</h3>
             <p class="text-slate-500 text-sm mt-1"><i class="fa-solid fa-location-dot text-gold mr-1"></i> Lurín, Lima Sur</p>
             <div class="flex flex-wrap items-center gap-x-4 gap-y-2 sm:gap-5 text-[13px] sm:text-sm text-slate-600 mt-4 border-y border-slate-100 py-3">
               <span><i class="fa-solid fa-vector-square text-gold mr-1.5"></i>Saneado</span>
@@ -275,14 +287,14 @@
         </article>
 
         <!-- CARD 6 -->
-        <article class="prop-card fade-in bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-card hover:-translate-y-1 hover:shadow-xl transition" data-operacion="alquiler" data-tipo="casa" data-titulo="Casa Acogedora Amoblada">
-          <div class="relative h-52 sm:h-60 overflow-hidden">
+        <article class="prop-card fade-in bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-card hover:shadow-xl transition min-w-[84%] sm:min-w-[47%] lg:min-w-[31.8%] shrink-0 snap-start" data-operacion="alquiler" data-tipo="casa" data-titulo="Casa Acogedora Amoblada">
+          <div class="relative h-44 sm:h-48 overflow-hidden">
             <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=800&auto=format&fit=crop" alt="Casa en alquiler" class="card-img w-full h-full object-cover" loading="lazy">
             <span class="absolute top-4 left-4 bg-gold text-white text-xs font-bold px-3 py-1.5 rounded-full tracking-wide">EN ALQUILER</span>
 
           </div>
-          <div class="p-6">
-            <h3 class="font-bold text-lg text-navy">Casa Acogedora Amoblada</h3>
+          <div class="p-5">
+            <h3 class="font-bold text-[17px] leading-snug text-navy">Casa Acogedora Amoblada</h3>
             <p class="text-slate-500 text-sm mt-1"><i class="fa-solid fa-location-dot text-gold mr-1"></i> Jesús María, Lima</p>
             <div class="flex flex-wrap items-center gap-x-4 gap-y-2 sm:gap-5 text-[13px] sm:text-sm text-slate-600 mt-4 border-y border-slate-100 py-3">
               <span><i class="fa-solid fa-bed text-gold mr-1.5"></i>3 Dorm.</span>
@@ -388,17 +400,17 @@
   <section id="sobre-mi" class="py-14 sm:py-20 bg-slate-50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-10 sm:gap-12 items-center">
       <div class="relative pb-8 sm:pb-0">
-        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=800&auto=format&fit=crop" alt="Berardina Hernandez - Asesora inmobiliaria en Lima" class="rounded-2xl shadow-card w-full max-w-md mx-auto object-cover h-[340px] sm:h-[440px] lg:h-[480px]" loading="lazy">
+        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=800&auto=format&fit=crop" alt="BH Inmobiliaria - Asesoría inmobiliaria en Lima" class="rounded-2xl shadow-card w-full max-w-md mx-auto object-cover h-[340px] sm:h-[440px] lg:h-[480px]" loading="lazy">
         <div class="absolute bottom-0 sm:-bottom-6 left-1/2 -translate-x-1/2 lg:left-8 lg:translate-x-0 bg-navy text-white rounded-2xl px-5 sm:px-6 py-3 sm:py-4 shadow-xl flex items-center gap-3 w-[92%] max-w-[340px] sm:w-auto">
           <span class="w-11 h-11 rounded-full bg-gold flex items-center justify-center text-xl"><i class="fa-solid fa-award"></i></span>
           <div class="leading-tight"><p class="font-heading font-bold">Agente certificada</p><p class="text-xs text-slate-300">Compromiso y transparencia</p></div>
         </div>
       </div>
       <div>
-        <p class="text-gold font-bold tracking-widest text-sm uppercase">Sobre mí</p>
-        <h2 class="font-extrabold text-3xl sm:text-4xl text-navy mt-2">Hola, soy Berardina Hernandez</h2>
+        <p class="text-gold font-bold tracking-widest text-sm uppercase">Sobre nosotros</p>
+        <h2 class="font-extrabold text-3xl sm:text-4xl text-navy mt-2">Tu asesora de confianza en Lima</h2>
         <p class="text-slate-600 mt-5 leading-relaxed">
-          Soy <strong class="text-navy">asesora inmobiliaria en Lima, Perú (BH Inmobiliaria)</strong> con más de 5 años ayudando a familias a comprar, vender y alquilar sin complicaciones. Mi diferencia: trato directo, honestidad en el precio y acompañamiento legal hasta la firma.
+          Somos <strong class="text-navy">BH Inmobiliaria, Lima Perú</strong> con más de 5 años ayudando a familias a comprar, vender y alquilar sin complicaciones. Nuestra diferencia: trato directo, honestidad en el precio y acompañamiento legal hasta la firma.
         </p>
         <p class="text-slate-600 mt-3 leading-relaxed">
           Cada propiedad que publico está verificada y cada cliente recibe atención personalizada por WhatsApp, llamada o visita presencial.
@@ -431,7 +443,7 @@
       <div>
         <div class="flex items-center gap-3">
           <div class="w-10 h-10 rounded-xl bg-gold flex items-center justify-center text-navy font-heading font-extrabold text-xl">BH</div>
-          <p class="text-white font-heading font-bold text-lg">Berardina Hernandez</p>
+          <p class="text-white font-heading font-bold text-lg">BH Inmobiliaria</p>
         </div>
         <p class="text-sm mt-4 leading-relaxed text-slate-400">BH Inmobiliaria • Venta y alquiler de inmuebles en Lima, Perú con asesoría personalizada, legal y transparente.</p>
         <div class="flex gap-3 mt-5">
@@ -456,12 +468,12 @@
           <li><a href="#inicio" class="hover:text-gold-light">→ Inicio</a></li>
           <li><a href="#propiedades" class="hover:text-gold-light">→ Propiedades destacadas</a></li>
           <li><a href="#vender" class="hover:text-gold-light">→ Vender / alquilar mi inmueble</a></li>
-          <li><a href="#sobre-mi" class="hover:text-gold-light">→ Sobre mí</a></li>
+          <li><a href="#sobre-mi" class="hover:text-gold-light">→ Nosotros</a></li>
         </ul>
       </div>
     </div>
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-12 pt-6 border-t border-white/10 flex flex-col sm:flex-row justify-between gap-2 text-xs text-slate-500">
-      <p>© <span id="anio">2026</span> Berardina Hernandez - BH Inmobiliaria, Lima Perú. Todos los derechos reservados.</p>
+      <p>© <span id="anio">2026</span> BH Inmobiliaria, Lima Perú. Todos los derechos reservados.</p>
       <p>Hecho con compromiso por tu asesora de confianza.</p>
     </div>
   </footer>
@@ -476,7 +488,7 @@
   <!-- ================= JAVASCRIPT VANILLA ================= -->
   <script>
     /* ===== CONFIGURA AQUÍ TU NÚMERO REAL (código país + número, sin + ni espacios) ===== */
-    const WHATSAPP_NUMBER = "51966600471"; // WhatsApp de Berardina Hernandez
+    const WHATSAPP_NUMBER = "51966600471"; // WhatsApp de contacto BH Inmobiliaria
     const MENSAJE_GENERAL = "Hola, quiero información sobre sus servicios inmobiliarios.";
 
     const waLink = (msg) => `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`;
@@ -530,6 +542,12 @@
       b.classList.add("active"); filtroTipo = b.dataset.tipo; aplicarFiltros();
     }));
     aplicarFiltros();
+
+    // 4b. Flechas del carrusel horizontal (scroll por tarjeta)
+    const track = document.getElementById("grid-propiedades");
+    const paso = () => (track.querySelector(".prop-card:not(.hidden)")?.offsetWidth || 320) + 16;
+    document.getElementById("prop-prev")?.addEventListener("click", () => track.scrollBy({ left: -paso(), behavior: "smooth" }));
+    document.getElementById("prop-next")?.addEventListener("click", () => track.scrollBy({ left: paso(), behavior: "smooth" }));
 
     // 5. Botón "Consultar por esta propiedad" → WhatsApp prellenado
     document.querySelectorAll(".btn-consultar").forEach(btn => btn.addEventListener("click", () => {
