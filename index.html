@@ -177,7 +177,16 @@
           <button data-tipo="terreno" class="filter-btn-tipo shrink-0 whitespace-nowrap px-4 sm:px-5 py-2.5 rounded-full border border-slate-300 text-[13px] sm:text-sm font-semibold transition min-h-[44px]">Terrenos</button>
         </div>
       </div>
-      <p id="contador-prop" class="text-sm text-slate-500 mt-4"></p>
+      <div class="flex flex-col sm:flex-row sm:items-center gap-2.5 sm:gap-3 mt-4">
+        <div class="relative flex-1">
+          <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-sm pointer-events-none"></i>
+          <input id="buscador-prop" type="search" placeholder="Buscar por distrito o nombre… (ej. Miraflores)" autocomplete="off"
+            class="w-full border border-slate-300 rounded-full pl-11 pr-10 py-3 min-h-[48px] focus:outline-none focus:ring-2 focus:ring-gold focus:border-gold bg-white" />
+          <button id="buscar-clear" aria-label="Limpiar búsqueda" class="hidden absolute right-3 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full text-slate-400 hover:text-navy hover:bg-slate-100 transition items-center justify-center"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <button id="filtros-limpiar" class="hidden shrink-0 inline-flex items-center justify-center gap-2 px-5 py-3 min-h-[48px] rounded-full border border-slate-300 text-sm font-semibold text-navy hover:bg-navy hover:text-white hover:border-navy transition"><i class="fa-solid fa-rotate-left"></i>Limpiar</button>
+        <p id="contador-prop" class="text-sm text-slate-500 sm:text-right sm:ml-auto shrink-0" aria-live="polite"></p>
+      </div>
 
       <!-- Tira horizontal full-bleed (pegada al borde) + flechas -->
       <div class="flex items-center justify-between mt-5 gap-3">
@@ -514,22 +523,41 @@
       header.classList.toggle("shadow-xl", scrollY > 10);
     });
 
-    // 4. Filtros del catálogo (operación + tipo)
-    let filtroOp = "todas", filtroTipo = "todos";
+    // 4. Filtros del catálogo (operación + tipo + búsqueda)
+    let filtroOp = "todas", filtroTipo = "todos", query = "";
     const cards = [...document.querySelectorAll(".prop-card")];
+    const totalProps = cards.length;
     const contador = document.getElementById("contador-prop");
+    const inputQ = document.getElementById("buscador-prop");
+    const btnClearQ = document.getElementById("buscar-clear");
+    const btnLimpiar = document.getElementById("filtros-limpiar");
+
+    // Accesibilidad: indica qué píldora está activa
+    function syncAria() {
+      document.querySelectorAll("#filtros-operacion .filter-btn").forEach(b => b.setAttribute("aria-pressed", b.dataset.filtro === filtroOp ? "true" : "false"));
+      document.querySelectorAll("#filtros-tipo .filter-btn-tipo").forEach(b => b.setAttribute("aria-pressed", b.dataset.tipo === filtroTipo ? "true" : "false"));
+    }
+
+    function filtrosActivos() { return filtroOp !== "todas" || filtroTipo !== "todos" || query !== ""; }
 
     function aplicarFiltros() {
       let visibles = 0;
       cards.forEach(c => {
         const okOp = filtroOp === "todas" || c.dataset.operacion === filtroOp;
         const okTipo = filtroTipo === "todos" || c.dataset.tipo === filtroTipo;
-        const show = okOp && okTipo;
+        const texto = ((c.dataset.titulo || "") + " " + (c.innerText || "")).toLowerCase();
+        const okQ = query === "" || texto.includes(query);
+        const show = okOp && okTipo && okQ;
         c.classList.toggle("hidden", !show);
         if (show) { visibles++; c.classList.remove("fade-in"); void c.offsetWidth; c.classList.add("fade-in"); }
       });
-      contador.textContent = visibles ? `Mostrando ${visibles} ${visibles === 1 ? "propiedad" : "propiedades"}` : "";
-      // Al filtrar: volver al inicio del carrusel y resincronizar flechas/progreso
+      // Contador en vivo + estado vacío en línea
+      contador.textContent = visibles === 0
+        ? "0 resultados — ajusta la búsqueda o limpia los filtros"
+        : (filtrosActivos() ? `Mostrando ${visibles} de ${totalProps}` : `${totalProps} propiedades`);
+      if (btnLimpiar) btnLimpiar.classList.toggle("hidden", !filtrosActivos());
+      syncAria();
+      // Al filtrar: volver al inicio del carrusel y resincronizar flechas
       const t = document.getElementById("grid-propiedades");
       if (t) t.scrollTo({ left: 0 });
       try { syncCarrusel(); } catch (_) {}
@@ -542,6 +570,31 @@
       document.querySelectorAll("#filtros-tipo .filter-btn-tipo").forEach(x => x.classList.remove("active"));
       b.classList.add("active"); filtroTipo = b.dataset.tipo; aplicarFiltros();
     }));
+    // Buscador con debounce + botón X + botón Limpiar general
+    let debounce;
+    inputQ?.addEventListener("input", () => {
+      clearTimeout(debounce);
+      debounce = setTimeout(() => {
+        query = inputQ.value.trim().toLowerCase();
+        const hay = inputQ.value.length > 0;
+        btnClearQ?.classList.toggle("hidden", !hay);
+        btnClearQ?.classList.toggle("flex", hay);
+        aplicarFiltros();
+      }, 180);
+    });
+    btnClearQ?.addEventListener("click", () => {
+      inputQ.value = ""; query = "";
+      btnClearQ.classList.add("hidden"); btnClearQ.classList.remove("flex");
+      inputQ.focus(); aplicarFiltros();
+    });
+    btnLimpiar?.addEventListener("click", () => {
+      filtroOp = "todas"; filtroTipo = "todos"; query = "";
+      document.querySelectorAll("#filtros-operacion .filter-btn").forEach(x => x.classList.toggle("active", x.dataset.filtro === "todas"));
+      document.querySelectorAll("#filtros-tipo .filter-btn-tipo").forEach(x => x.classList.toggle("active", x.dataset.tipo === "todos"));
+      if (inputQ) inputQ.value = "";
+      btnClearQ?.classList.add("hidden"); btnClearQ?.classList.remove("flex");
+      aplicarFiltros();
+    });
     aplicarFiltros();
 
     // 4b. Flechas + progreso + arrastre del carrusel edge-to-edge
