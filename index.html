@@ -61,7 +61,9 @@
     /* Botón WhatsApp flotante */
     .wa-float { animation: pulseWa 2.2s infinite; }
     @keyframes pulseWa { 0%{box-shadow:0 0 0 0 rgba(37,211,102,.5)} 70%{box-shadow:0 0 0 16px rgba(37,211,102,0)} 100%{box-shadow:0 0 0 0 rgba(37,211,102,0)} }
-    /* Carrusel horizontal de propiedades: edge-to-edge, 1 sola fila */
+    /* Filas de filtros: scroll horizontal limpio en móvil */
+    .pills-scroll { scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+    .pills-scroll::-webkit-scrollbar { display: none; }
     #grid-propiedades { scrollbar-width: thin; scrollbar-color: #d97706 #e2e8f0; scroll-padding-left: 1rem; -webkit-overflow-scrolling: touch; }
     #grid-propiedades::-webkit-scrollbar { height: 8px; }
     #grid-propiedades::-webkit-scrollbar-track { background: #f1f5f9; border-radius: 99px; }
@@ -160,19 +162,19 @@
       </div>
 
       <!-- Filtros -->
-      <div class="mt-6 sm:mt-8 flex flex-col lg:flex-row gap-4 lg:items-center lg:justify-between bg-slate-50 border border-slate-200 rounded-2xl p-3 sm:p-5">
-        <div class="flex flex-wrap gap-2" id="filtros-operacion">
-          <span class="w-full text-[13px] sm:text-sm font-semibold text-slate-500 mr-1 mb-1 sm:mb-0 self-center"><i class="fa-solid fa-filter mr-1"></i> Operación:</span>
-          <button data-filtro="todas" class="filter-btn active flex-1 sm:flex-none px-4 sm:px-5 py-2.5 rounded-full border border-slate-300 text-[13px] sm:text-sm font-semibold transition min-h-[44px]">Todas</button>
-          <button data-filtro="venta" class="filter-btn flex-1 sm:flex-none px-4 sm:px-5 py-2.5 rounded-full border border-slate-300 text-[13px] sm:text-sm font-semibold transition min-h-[44px]">En Venta</button>
-          <button data-filtro="alquiler" class="filter-btn flex-1 sm:flex-none px-4 sm:px-5 py-2.5 rounded-full border border-slate-300 text-[13px] sm:text-sm font-semibold transition min-h-[44px]">En Alquiler</button>
+      <div class="mt-6 sm:mt-8 flex flex-col lg:flex-row lg:items-center gap-3 lg:gap-6 bg-slate-50 border border-slate-200 rounded-2xl p-3 sm:p-4 lg:p-5">
+        <div class="pills-scroll flex items-center gap-2 overflow-x-auto sm:flex-wrap sm:overflow-visible pb-1 sm:pb-0 -mx-1 px-1 lg:flex-1" id="filtros-operacion">
+          <span class="shrink-0 text-[12px] sm:text-sm font-bold uppercase tracking-wider text-slate-400 sm:mr-1"><i class="fa-solid fa-filter mr-1.5"></i>Operación</span>
+          <button data-filtro="todas" class="filter-btn active shrink-0 whitespace-nowrap px-4 sm:px-5 py-2.5 rounded-full border border-slate-300 text-[13px] sm:text-sm font-semibold transition min-h-[44px]">Todas</button>
+          <button data-filtro="venta" class="filter-btn shrink-0 whitespace-nowrap px-4 sm:px-5 py-2.5 rounded-full border border-slate-300 text-[13px] sm:text-sm font-semibold transition min-h-[44px]">En Venta</button>
+          <button data-filtro="alquiler" class="filter-btn shrink-0 whitespace-nowrap px-4 sm:px-5 py-2.5 rounded-full border border-slate-300 text-[13px] sm:text-sm font-semibold transition min-h-[44px]">En Alquiler</button>
         </div>
-        <div class="flex flex-wrap gap-2" id="filtros-tipo">
-          <span class="w-full text-[13px] sm:text-sm font-semibold text-slate-500 mr-1 mb-1 sm:mb-0 self-center">Inmueble:</span>
-          <button data-tipo="todos" class="filter-btn-tipo active flex-1 sm:flex-none px-4 sm:px-5 py-2.5 rounded-full border border-slate-300 text-[13px] sm:text-sm font-semibold transition min-h-[44px]">Todos</button>
-          <button data-tipo="departamento" class="filter-btn-tipo flex-1 sm:flex-none px-4 sm:px-5 py-2.5 rounded-full border border-slate-300 text-[13px] sm:text-sm font-semibold transition min-h-[44px]">Depas</button>
-          <button data-tipo="casa" class="filter-btn-tipo flex-1 sm:flex-none px-4 sm:px-5 py-2.5 rounded-full border border-slate-300 text-[13px] sm:text-sm font-semibold transition min-h-[44px]">Casas</button>
-          <button data-tipo="terreno" class="filter-btn-tipo flex-1 sm:flex-none px-4 sm:px-5 py-2.5 rounded-full border border-slate-300 text-[13px] sm:text-sm font-semibold transition min-h-[44px]">Terrenos</button>
+        <div class="pills-scroll flex items-center gap-2 overflow-x-auto sm:flex-wrap sm:overflow-visible pb-1 sm:pb-0 -mx-1 px-1 lg:flex-1 lg:border-l lg:border-slate-200 lg:pl-6" id="filtros-tipo">
+          <span class="shrink-0 text-[12px] sm:text-sm font-bold uppercase tracking-wider text-slate-400 sm:mr-1"><i class="fa-solid fa-house mr-1.5"></i>Inmueble</span>
+          <button data-tipo="todos" class="filter-btn-tipo active shrink-0 whitespace-nowrap px-4 sm:px-5 py-2.5 rounded-full border border-slate-300 text-[13px] sm:text-sm font-semibold transition min-h-[44px]">Todos</button>
+          <button data-tipo="departamento" class="filter-btn-tipo shrink-0 whitespace-nowrap px-4 sm:px-5 py-2.5 rounded-full border border-slate-300 text-[13px] sm:text-sm font-semibold transition min-h-[44px]">Depas</button>
+          <button data-tipo="casa" class="filter-btn-tipo shrink-0 whitespace-nowrap px-4 sm:px-5 py-2.5 rounded-full border border-slate-300 text-[13px] sm:text-sm font-semibold transition min-h-[44px]">Casas</button>
+          <button data-tipo="terreno" class="filter-btn-tipo shrink-0 whitespace-nowrap px-4 sm:px-5 py-2.5 rounded-full border border-slate-300 text-[13px] sm:text-sm font-semibold transition min-h-[44px]">Terrenos</button>
         </div>
       </div>
       <p id="contador-prop" class="text-sm text-slate-500 mt-4"></p>
