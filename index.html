@@ -54,8 +54,7 @@
     }
     .card-img { transition: transform .6s ease; }
     .prop-card:hover .card-img { transform: scale(1.07); }
-    .filter-btn.active { background:#0f172a; color:#fff; border-color:#0f172a; }
-    .filter-btn-tipo.active { background:#d97706; color:#fff; border-color:#d97706; }
+    .filter-btn.active { background:#d97706; color:#fff; border-color:#d97706; }
     .fade-in { animation: fadeIn .45s ease both; }
     @keyframes fadeIn { from { opacity:0; transform: translateY(12px);} to { opacity:1; transform: translateY(0);} }
     /* Botón WhatsApp flotante */
@@ -174,19 +173,16 @@
           <button id="filtros-limpiar" aria-label="Limpiar filtros" title="Limpiar filtros" class="hidden shrink-0 w-11 h-11 rounded-xl border border-slate-300 text-navy hover:bg-navy hover:text-white hover:border-navy transition items-center justify-center"><i class="fa-solid fa-rotate-left"></i></button>
         </div>
         <!-- Fila 2: píldoras -->
-        <div class="flex flex-col lg:flex-row lg:items-center gap-1 lg:gap-5 mt-2">
-          <div class="pills-scroll flex items-center gap-1.5 overflow-x-auto sm:flex-wrap sm:overflow-visible py-1 -mx-1 px-1 lg:flex-1" id="filtros-operacion">
-            <span class="shrink-0 text-[11px] sm:text-xs font-bold uppercase tracking-wider text-slate-400 sm:mr-1"><i class="fa-solid fa-filter mr-1.5"></i>Operación</span>
-          <button data-filtro="todas" class="filter-btn active shrink-0 whitespace-nowrap px-3.5 sm:px-4 py-2 rounded-full border border-slate-300 text-[12px] sm:text-[13px] font-semibold transition min-h-[40px]">Todas</button>
-          <button data-filtro="venta" class="filter-btn shrink-0 whitespace-nowrap px-3.5 sm:px-4 py-2 rounded-full border border-slate-300 text-[12px] sm:text-[13px] font-semibold transition min-h-[40px]">En Venta</button>
-          <button data-filtro="alquiler" class="filter-btn shrink-0 whitespace-nowrap px-3.5 sm:px-4 py-2 rounded-full border border-slate-300 text-[12px] sm:text-[13px] font-semibold transition min-h-[40px]">En Alquiler</button>
+        <div class="mt-2">
+        <div class="pills-scroll flex items-center gap-1.5 overflow-x-auto py-1.5 -mx-1 px-1" id="filtros-simples" role="group" aria-label="Filtrar propiedades">
+          <button data-f="todas" class="filter-btn active shrink-0 whitespace-nowrap px-3.5 sm:px-4 py-2 rounded-full border border-slate-300 text-[12px] sm:text-[13px] font-semibold transition min-h-[40px]">Todas</button>
+          <button data-f="venta" class="filter-btn shrink-0 whitespace-nowrap px-3.5 sm:px-4 py-2 rounded-full border border-slate-300 text-[12px] sm:text-[13px] font-semibold transition min-h-[40px]">En Venta</button>
+          <button data-f="alquiler" class="filter-btn shrink-0 whitespace-nowrap px-3.5 sm:px-4 py-2 rounded-full border border-slate-300 text-[12px] sm:text-[13px] font-semibold transition min-h-[40px]">En Alquiler</button>
         </div>
-        <div class="pills-scroll flex items-center gap-1.5 overflow-x-auto sm:flex-wrap sm:overflow-visible py-1 -mx-1 px-1 lg:flex-1 lg:border-l lg:border-slate-200 lg:pl-5" id="filtros-tipo">
-          <span class="shrink-0 text-[11px] sm:text-xs font-bold uppercase tracking-wider text-slate-400 sm:mr-1"><i class="fa-solid fa-house mr-1.5"></i>Inmueble</span>
-          <button data-tipo="todos" class="filter-btn-tipo active shrink-0 whitespace-nowrap px-3.5 sm:px-4 py-2 rounded-full border border-slate-300 text-[12px] sm:text-[13px] font-semibold transition min-h-[40px]">Todos</button>
-          <button data-tipo="departamento" class="filter-btn-tipo shrink-0 whitespace-nowrap px-3.5 sm:px-4 py-2 rounded-full border border-slate-300 text-[12px] sm:text-[13px] font-semibold transition min-h-[40px]">Depas</button>
-          <button data-tipo="casa" class="filter-btn-tipo shrink-0 whitespace-nowrap px-3.5 sm:px-4 py-2 rounded-full border border-slate-300 text-[12px] sm:text-[13px] font-semibold transition min-h-[40px]">Casas</button>
-          <button data-tipo="terreno" class="filter-btn-tipo shrink-0 whitespace-nowrap px-3.5 sm:px-4 py-2 rounded-full border border-slate-300 text-[12px] sm:text-[13px] font-semibold transition min-h-[40px]">Terrenos</button>
+
+          <button data-f="departamento" class="filter-btn shrink-0 whitespace-nowrap px-3.5 sm:px-4 py-2 rounded-full border border-slate-300 text-[12px] sm:text-[13px] font-semibold transition min-h-[40px]">Depas</button>
+          <button data-f="casa" class="filter-btn shrink-0 whitespace-nowrap px-3.5 sm:px-4 py-2 rounded-full border border-slate-300 text-[12px] sm:text-[13px] font-semibold transition min-h-[40px]">Casas</button>
+          <button data-f="terreno" class="filter-btn shrink-0 whitespace-nowrap px-3.5 sm:px-4 py-2 rounded-full border border-slate-300 text-[12px] sm:text-[13px] font-semibold transition min-h-[40px]">Terrenos</button>
         </div>
       </div>
       <!-- Utilidad: contador + flechas del carrusel -->
@@ -203,7 +199,7 @@
       <div id="grid-propiedades" tabindex="0" aria-label="Lista de propiedades, usa flechas para navegar" class="flex gap-4 sm:gap-5 overflow-x-auto pb-4 pr-4 sm:pr-8 snap-x snap-mandatory scroll-smooth cursor-grab select-none focus:outline-none focus-visible:ring-2 focus-visible:ring-gold rounded-xl">
 
         <!-- CARD 1 -->
-        <article class="prop-card bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-card hover:shadow-xl transition min-w-[88%] sm:min-w-[68%] lg:min-w-[48.5%] shrink-0 snap-start fade-in flex flex-row" data-operacion="venta" data-tipo="casa" data-titulo="Casa Moderna Las Lomas">
+        <article class="prop-card bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-card hover:shadow-xl transition min-w-[88%] sm:min-w-[68%] lg:min-w-[48.5%] shrink-0 snap-start fade-in flex flex-row" data-operacion="venta" data-f="casa" data-titulo="Casa Moderna Las Lomas">
           <div class="relative w-[38%] sm:w-[42%] shrink-0 overflow-hidden">
             <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=800&auto=format&fit=crop" alt="Casa Moderna Las Lomas" class="card-img absolute inset-0 w-full h-full object-cover" loading="lazy">
             <span class="absolute top-3 left-3 bg-navy text-white text-[11px] font-bold px-2.5 py-1 rounded-full tracking-wide">EN VENTA</span>
@@ -223,7 +219,7 @@
         </article>
 
         <!-- CARD 2 -->
-        <article class="prop-card bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-card hover:shadow-xl transition min-w-[88%] sm:min-w-[68%] lg:min-w-[48.5%] shrink-0 snap-start fade-in flex flex-row" data-operacion="alquiler" data-tipo="departamento" data-titulo="Departamento Céntrico Miraflores">
+        <article class="prop-card bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-card hover:shadow-xl transition min-w-[88%] sm:min-w-[68%] lg:min-w-[48.5%] shrink-0 snap-start fade-in flex flex-row" data-operacion="alquiler" data-f="departamento" data-titulo="Departamento Céntrico Miraflores">
           <div class="relative w-[38%] sm:w-[42%] shrink-0 overflow-hidden">
             <img src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?q=80&w=800&auto=format&fit=crop" alt="Departamento Céntrico" class="card-img absolute inset-0 w-full h-full object-cover" loading="lazy">
             <span class="absolute top-3 left-3 bg-gold text-white text-[11px] font-bold px-2.5 py-1 rounded-full tracking-wide">EN ALQUILER</span>
@@ -243,7 +239,7 @@
         </article>
 
         <!-- CARD 3 -->
-        <article class="prop-card bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-card hover:shadow-xl transition min-w-[88%] sm:min-w-[68%] lg:min-w-[48.5%] shrink-0 snap-start fade-in flex flex-row" data-operacion="venta" data-tipo="casa" data-titulo="Casa Familiar con Jardín">
+        <article class="prop-card bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-card hover:shadow-xl transition min-w-[88%] sm:min-w-[68%] lg:min-w-[48.5%] shrink-0 snap-start fade-in flex flex-row" data-operacion="venta" data-f="casa" data-titulo="Casa Familiar con Jardín">
           <div class="relative w-[38%] sm:w-[42%] shrink-0 overflow-hidden">
             <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=800&auto=format&fit=crop" alt="Casa Familiar" class="card-img absolute inset-0 w-full h-full object-cover" loading="lazy">
             <span class="absolute top-3 left-3 bg-navy text-white text-[11px] font-bold px-2.5 py-1 rounded-full tracking-wide">EN VENTA</span>
@@ -263,7 +259,7 @@
         </article>
 
         <!-- CARD 4 -->
-        <article class="prop-card bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-card hover:shadow-xl transition min-w-[88%] sm:min-w-[68%] lg:min-w-[48.5%] shrink-0 snap-start fade-in flex flex-row" data-operacion="venta" data-tipo="departamento" data-titulo="Depa Nuevo con Vista Panorámica">
+        <article class="prop-card bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-card hover:shadow-xl transition min-w-[88%] sm:min-w-[68%] lg:min-w-[48.5%] shrink-0 snap-start fade-in flex flex-row" data-operacion="venta" data-f="departamento" data-titulo="Depa Nuevo con Vista Panorámica">
           <div class="relative w-[38%] sm:w-[42%] shrink-0 overflow-hidden">
             <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?q=80&w=800&auto=format&fit=crop" alt="Departamento vista panorámica" class="card-img absolute inset-0 w-full h-full object-cover" loading="lazy">
             <span class="absolute top-3 left-3 bg-navy text-white text-[11px] font-bold px-2.5 py-1 rounded-full tracking-wide">EN VENTA</span>
@@ -283,7 +279,7 @@
         </article>
 
         <!-- CARD 5 -->
-        <article class="prop-card bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-card hover:shadow-xl transition min-w-[88%] sm:min-w-[68%] lg:min-w-[48.5%] shrink-0 snap-start fade-in flex flex-row" data-operacion="venta" data-tipo="terreno" data-titulo="Terreno Plano 500m²">
+        <article class="prop-card bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-card hover:shadow-xl transition min-w-[88%] sm:min-w-[68%] lg:min-w-[48.5%] shrink-0 snap-start fade-in flex flex-row" data-operacion="venta" data-f="terreno" data-titulo="Terreno Plano 500m²">
           <div class="relative w-[38%] sm:w-[42%] shrink-0 overflow-hidden">
             <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?q=80&w=800&auto=format&fit=crop" alt="Terreno" class="card-img absolute inset-0 w-full h-full object-cover" loading="lazy">
             <span class="absolute top-3 left-3 bg-navy text-white text-[11px] font-bold px-2.5 py-1 rounded-full tracking-wide">EN VENTA</span>
@@ -303,7 +299,7 @@
         </article>
 
         <!-- CARD 6 -->
-        <article class="prop-card bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-card hover:shadow-xl transition min-w-[88%] sm:min-w-[68%] lg:min-w-[48.5%] shrink-0 snap-start fade-in flex flex-row" data-operacion="alquiler" data-tipo="casa" data-titulo="Casa Acogedora Amoblada">
+        <article class="prop-card bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-card hover:shadow-xl transition min-w-[88%] sm:min-w-[68%] lg:min-w-[48.5%] shrink-0 snap-start fade-in flex flex-row" data-operacion="alquiler" data-f="casa" data-titulo="Casa Acogedora Amoblada">
           <div class="relative w-[38%] sm:w-[42%] shrink-0 overflow-hidden">
             <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=800&auto=format&fit=crop" alt="Casa en alquiler" class="card-img absolute inset-0 w-full h-full object-cover" loading="lazy">
             <span class="absolute top-3 left-3 bg-gold text-white text-[11px] font-bold px-2.5 py-1 rounded-full tracking-wide">EN ALQUILER</span>
@@ -524,8 +520,8 @@
       header.classList.toggle("shadow-xl", scrollY > 10);
     });
 
-    // 4. Filtros del catálogo (operación + tipo + búsqueda)
-    let filtroOp = "todas", filtroTipo = "todos", query = "";
+    // 4. Filtro simple (una sola selección) + búsqueda
+    let filtro = "todas", query = "";
     const cards = [...document.querySelectorAll(".prop-card")];
     const totalProps = cards.length;
     const contador = document.getElementById("contador-prop");
@@ -535,20 +531,19 @@
 
     // Accesibilidad: indica qué píldora está activa
     function syncAria() {
-      document.querySelectorAll("#filtros-operacion .filter-btn").forEach(b => b.setAttribute("aria-pressed", b.dataset.filtro === filtroOp ? "true" : "false"));
-      document.querySelectorAll("#filtros-tipo .filter-btn-tipo").forEach(b => b.setAttribute("aria-pressed", b.dataset.tipo === filtroTipo ? "true" : "false"));
+      document.querySelectorAll("#filtros-simples .filter-btn").forEach(b => b.setAttribute("aria-pressed", b.dataset.f === filtro ? "true" : "false"));
     }
 
-    function filtrosActivos() { return filtroOp !== "todas" || filtroTipo !== "todos" || query !== ""; }
+    function filtrosActivos() { return filtro !== "todas" || query !== ""; }
 
     function aplicarFiltros() {
       let visibles = 0;
       cards.forEach(c => {
-        const okOp = filtroOp === "todas" || c.dataset.operacion === filtroOp;
-        const okTipo = filtroTipo === "todos" || c.dataset.tipo === filtroTipo;
+        const esOp = filtro === "venta" || filtro === "alquiler";
+        const okF = filtro === "todas" || (esOp ? c.dataset.operacion === filtro : c.dataset.tipo === filtro);
         const texto = ((c.dataset.titulo || "") + " " + (c.innerText || "")).toLowerCase();
         const okQ = query === "" || texto.includes(query);
-        const show = okOp && okTipo && okQ;
+        const show = okF && okQ;
         c.classList.toggle("hidden", !show);
         if (show) { visibles++; c.classList.remove("fade-in"); void c.offsetWidth; c.classList.add("fade-in"); }
       });
@@ -563,13 +558,9 @@
       if (t) t.scrollTo({ left: 0 });
       try { syncCarrusel(); } catch (_) {}
     }
-    document.querySelectorAll("#filtros-operacion .filter-btn").forEach(b => b.addEventListener("click", () => {
-      document.querySelectorAll("#filtros-operacion .filter-btn").forEach(x => x.classList.remove("active"));
-      b.classList.add("active"); filtroOp = b.dataset.filtro; aplicarFiltros();
-    }));
-    document.querySelectorAll("#filtros-tipo .filter-btn-tipo").forEach(b => b.addEventListener("click", () => {
-      document.querySelectorAll("#filtros-tipo .filter-btn-tipo").forEach(x => x.classList.remove("active"));
-      b.classList.add("active"); filtroTipo = b.dataset.tipo; aplicarFiltros();
+    document.querySelectorAll("#filtros-simples .filter-btn").forEach(b => b.addEventListener("click", () => {
+      document.querySelectorAll("#filtros-simples .filter-btn").forEach(x => x.classList.remove("active"));
+      b.classList.add("active"); filtro = b.dataset.f; aplicarFiltros();
     }));
     // Buscador con debounce + botón X + botón Limpiar general
     let debounce;
@@ -589,9 +580,8 @@
       inputQ.focus(); aplicarFiltros();
     });
     btnLimpiar?.addEventListener("click", () => {
-      filtroOp = "todas"; filtroTipo = "todos"; query = "";
-      document.querySelectorAll("#filtros-operacion .filter-btn").forEach(x => x.classList.toggle("active", x.dataset.filtro === "todas"));
-      document.querySelectorAll("#filtros-tipo .filter-btn-tipo").forEach(x => x.classList.toggle("active", x.dataset.tipo === "todos"));
+      filtro = "todas"; query = "";
+      document.querySelectorAll("#filtros-simples .filter-btn").forEach(x => x.classList.toggle("active", x.dataset.f === "todas"));
       if (inputQ) inputQ.value = "";
       btnClearQ?.classList.add("hidden"); btnClearQ?.classList.remove("flex");
       aplicarFiltros();
