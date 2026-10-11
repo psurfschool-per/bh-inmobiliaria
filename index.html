@@ -162,18 +162,6 @@
 
       <!-- Filtros: barra única compacta -->
       <div class="mt-5 sm:mt-6 bg-slate-50 border border-slate-200 rounded-2xl p-3 sm:p-4">
-        <!-- Fila 1: buscador + limpiar -->
-        <div class="flex items-center gap-2">
-          <div class="relative flex-1 min-w-0">
-            <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-sm pointer-events-none"></i>
-            <input id="buscador-prop" type="search" placeholder="Buscar distrito o nombre…" autocomplete="off"
-              class="w-full border border-slate-300 rounded-xl pl-10 pr-9 py-2.5 min-h-[44px] text-[15px] focus:outline-none focus:ring-2 focus:ring-gold focus:border-gold bg-white" />
-            <button id="buscar-clear" aria-label="Limpiar búsqueda" class="hidden absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full text-slate-400 hover:text-navy hover:bg-slate-100 transition items-center justify-center"><i class="fa-solid fa-xmark"></i></button>
-          </div>
-          <button id="filtros-limpiar" aria-label="Limpiar filtros" title="Limpiar filtros" class="hidden shrink-0 w-11 h-11 rounded-xl border border-slate-300 text-navy hover:bg-navy hover:text-white hover:border-navy transition items-center justify-center"><i class="fa-solid fa-rotate-left"></i></button>
-        </div>
-        <!-- Fila 2: píldoras -->
-        <div class="mt-2">
         <div class="pills-scroll flex items-center gap-1.5 overflow-x-auto py-1.5 -mx-1 px-1" id="filtros-simples" role="group" aria-label="Filtrar propiedades">
           <button data-f="todas" class="filter-btn active shrink-0 whitespace-nowrap px-3.5 sm:px-4 py-2 rounded-full border border-slate-300 text-[12px] sm:text-[13px] font-semibold transition min-h-[40px]">Todas</button>
           <button data-f="venta" class="filter-btn shrink-0 whitespace-nowrap px-3.5 sm:px-4 py-2 rounded-full border border-slate-300 text-[12px] sm:text-[13px] font-semibold transition min-h-[40px]">En Venta</button>
@@ -188,7 +176,8 @@
       <!-- Utilidad: contador + flechas del carrusel -->
       <div class="flex items-center justify-between mt-3 gap-3">
         <p id="contador-prop" class="text-[13px] sm:text-sm text-slate-500 font-medium truncate" aria-live="polite"></p>
-        <div class="flex gap-2 shrink-0">
+        <div class="flex items-center gap-2 shrink-0">
+          <button id="filtros-limpiar" class="hidden items-center gap-1.5 text-[13px] font-semibold text-gold hover:text-navy transition px-2 min-h-[40px]"><i class="fa-solid fa-rotate-left"></i>Limpiar</button>
           <button id="prop-prev" aria-label="Anterior" class="w-10 h-10 rounded-full border border-slate-300 text-navy hover:bg-navy hover:text-white hover:border-navy transition flex items-center justify-center disabled:opacity-30 disabled:pointer-events-none"><i class="fa-solid fa-chevron-left"></i></button>
           <button id="prop-next" aria-label="Siguiente" class="w-10 h-10 rounded-full border border-slate-300 text-navy hover:bg-navy hover:text-white hover:border-navy transition flex items-center justify-center disabled:opacity-30 disabled:pointer-events-none"><i class="fa-solid fa-chevron-right"></i></button>
         </div>
@@ -521,12 +510,10 @@
     });
 
     // 4. Filtro simple (una sola selección) + búsqueda
-    let filtro = "todas", query = "";
+    let filtro = "todas";
     const cards = [...document.querySelectorAll(".prop-card")];
     const totalProps = cards.length;
     const contador = document.getElementById("contador-prop");
-    const inputQ = document.getElementById("buscador-prop");
-    const btnClearQ = document.getElementById("buscar-clear");
     const btnLimpiar = document.getElementById("filtros-limpiar");
 
     // Accesibilidad: indica qué píldora está activa
@@ -534,22 +521,20 @@
       document.querySelectorAll("#filtros-simples .filter-btn").forEach(b => b.setAttribute("aria-pressed", b.dataset.f === filtro ? "true" : "false"));
     }
 
-    function filtrosActivos() { return filtro !== "todas" || query !== ""; }
+    function filtrosActivos() { return filtro !== "todas"; }
 
     function aplicarFiltros() {
       let visibles = 0;
       cards.forEach(c => {
         const esOp = filtro === "venta" || filtro === "alquiler";
         const okF = filtro === "todas" || (esOp ? c.dataset.operacion === filtro : c.dataset.tipo === filtro);
-        const texto = ((c.dataset.titulo || "") + " " + (c.innerText || "")).toLowerCase();
-        const okQ = query === "" || texto.includes(query);
-        const show = okF && okQ;
+        const show = okF;
         c.classList.toggle("hidden", !show);
         if (show) { visibles++; c.classList.remove("fade-in"); void c.offsetWidth; c.classList.add("fade-in"); }
       });
       // Contador en vivo + estado vacío en línea
       contador.textContent = visibles === 0
-        ? "0 resultados — ajusta la búsqueda o limpia los filtros"
+        ? "0 resultados — limpia los filtros para ver todo"
         : (filtrosActivos() ? `Mostrando ${visibles} de ${totalProps}` : `${totalProps} propiedades`);
       if (btnLimpiar) { btnLimpiar.classList.toggle("hidden", !filtrosActivos()); btnLimpiar.classList.toggle("flex", filtrosActivos()); }
       syncAria();
@@ -562,28 +547,10 @@
       document.querySelectorAll("#filtros-simples .filter-btn").forEach(x => x.classList.remove("active"));
       b.classList.add("active"); filtro = b.dataset.f; aplicarFiltros();
     }));
-    // Buscador con debounce + botón X + botón Limpiar general
-    let debounce;
-    inputQ?.addEventListener("input", () => {
-      clearTimeout(debounce);
-      debounce = setTimeout(() => {
-        query = inputQ.value.trim().toLowerCase();
-        const hay = inputQ.value.length > 0;
-        btnClearQ?.classList.toggle("hidden", !hay);
-        btnClearQ?.classList.toggle("flex", hay);
-        aplicarFiltros();
-      }, 180);
-    });
-    btnClearQ?.addEventListener("click", () => {
-      inputQ.value = ""; query = "";
-      btnClearQ.classList.add("hidden"); btnClearQ.classList.remove("flex");
-      inputQ.focus(); aplicarFiltros();
-    });
+    // Botón Limpiar: vuelve a "Todas"
     btnLimpiar?.addEventListener("click", () => {
-      filtro = "todas"; query = "";
+      filtro = "todas";
       document.querySelectorAll("#filtros-simples .filter-btn").forEach(x => x.classList.toggle("active", x.dataset.f === "todas"));
-      if (inputQ) inputQ.value = "";
-      btnClearQ?.classList.add("hidden"); btnClearQ?.classList.remove("flex");
       aplicarFiltros();
     });
     aplicarFiltros();
