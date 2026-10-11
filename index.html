@@ -161,36 +161,37 @@
         <p class="text-slate-500 mt-3 text-[15px] sm:text-base">Filtra por operación y tipo de inmueble. Toca “Consultar” y te contactamos por WhatsApp al instante.</p>
       </div>
 
-      <!-- Filtros -->
-      <div class="mt-6 sm:mt-8 flex flex-col lg:flex-row lg:items-center gap-3 lg:gap-6 bg-slate-50 border border-slate-200 rounded-2xl p-3 sm:p-4 lg:p-5">
-        <div class="pills-scroll flex items-center gap-2 overflow-x-auto sm:flex-wrap sm:overflow-visible pb-1 sm:pb-0 -mx-1 px-1 lg:flex-1" id="filtros-operacion">
-          <span class="shrink-0 text-[12px] sm:text-sm font-bold uppercase tracking-wider text-slate-400 sm:mr-1"><i class="fa-solid fa-filter mr-1.5"></i>Operación</span>
-          <button data-filtro="todas" class="filter-btn active shrink-0 whitespace-nowrap px-4 sm:px-5 py-2.5 rounded-full border border-slate-300 text-[13px] sm:text-sm font-semibold transition min-h-[44px]">Todas</button>
-          <button data-filtro="venta" class="filter-btn shrink-0 whitespace-nowrap px-4 sm:px-5 py-2.5 rounded-full border border-slate-300 text-[13px] sm:text-sm font-semibold transition min-h-[44px]">En Venta</button>
-          <button data-filtro="alquiler" class="filter-btn shrink-0 whitespace-nowrap px-4 sm:px-5 py-2.5 rounded-full border border-slate-300 text-[13px] sm:text-sm font-semibold transition min-h-[44px]">En Alquiler</button>
+      <!-- Filtros: barra única compacta -->
+      <div class="mt-5 sm:mt-6 bg-slate-50 border border-slate-200 rounded-2xl p-3 sm:p-4">
+        <!-- Fila 1: buscador + limpiar -->
+        <div class="flex items-center gap-2">
+          <div class="relative flex-1 min-w-0">
+            <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-sm pointer-events-none"></i>
+            <input id="buscador-prop" type="search" placeholder="Buscar distrito o nombre…" autocomplete="off"
+              class="w-full border border-slate-300 rounded-xl pl-10 pr-9 py-2.5 min-h-[44px] text-[15px] focus:outline-none focus:ring-2 focus:ring-gold focus:border-gold bg-white" />
+            <button id="buscar-clear" aria-label="Limpiar búsqueda" class="hidden absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full text-slate-400 hover:text-navy hover:bg-slate-100 transition items-center justify-center"><i class="fa-solid fa-xmark"></i></button>
+          </div>
+          <button id="filtros-limpiar" aria-label="Limpiar filtros" title="Limpiar filtros" class="hidden shrink-0 w-11 h-11 rounded-xl border border-slate-300 text-navy hover:bg-navy hover:text-white hover:border-navy transition items-center justify-center"><i class="fa-solid fa-rotate-left"></i></button>
         </div>
-        <div class="pills-scroll flex items-center gap-2 overflow-x-auto sm:flex-wrap sm:overflow-visible pb-1 sm:pb-0 -mx-1 px-1 lg:flex-1 lg:border-l lg:border-slate-200 lg:pl-6" id="filtros-tipo">
-          <span class="shrink-0 text-[12px] sm:text-sm font-bold uppercase tracking-wider text-slate-400 sm:mr-1"><i class="fa-solid fa-house mr-1.5"></i>Inmueble</span>
-          <button data-tipo="todos" class="filter-btn-tipo active shrink-0 whitespace-nowrap px-4 sm:px-5 py-2.5 rounded-full border border-slate-300 text-[13px] sm:text-sm font-semibold transition min-h-[44px]">Todos</button>
-          <button data-tipo="departamento" class="filter-btn-tipo shrink-0 whitespace-nowrap px-4 sm:px-5 py-2.5 rounded-full border border-slate-300 text-[13px] sm:text-sm font-semibold transition min-h-[44px]">Depas</button>
-          <button data-tipo="casa" class="filter-btn-tipo shrink-0 whitespace-nowrap px-4 sm:px-5 py-2.5 rounded-full border border-slate-300 text-[13px] sm:text-sm font-semibold transition min-h-[44px]">Casas</button>
-          <button data-tipo="terreno" class="filter-btn-tipo shrink-0 whitespace-nowrap px-4 sm:px-5 py-2.5 rounded-full border border-slate-300 text-[13px] sm:text-sm font-semibold transition min-h-[44px]">Terrenos</button>
+        <!-- Fila 2: píldoras -->
+        <div class="flex flex-col lg:flex-row lg:items-center gap-1 lg:gap-5 mt-2">
+          <div class="pills-scroll flex items-center gap-1.5 overflow-x-auto sm:flex-wrap sm:overflow-visible py-1 -mx-1 px-1 lg:flex-1" id="filtros-operacion">
+            <span class="shrink-0 text-[11px] sm:text-xs font-bold uppercase tracking-wider text-slate-400 sm:mr-1"><i class="fa-solid fa-filter mr-1.5"></i>Operación</span>
+          <button data-filtro="todas" class="filter-btn active shrink-0 whitespace-nowrap px-3.5 sm:px-4 py-2 rounded-full border border-slate-300 text-[12px] sm:text-[13px] font-semibold transition min-h-[40px]">Todas</button>
+          <button data-filtro="venta" class="filter-btn shrink-0 whitespace-nowrap px-3.5 sm:px-4 py-2 rounded-full border border-slate-300 text-[12px] sm:text-[13px] font-semibold transition min-h-[40px]">En Venta</button>
+          <button data-filtro="alquiler" class="filter-btn shrink-0 whitespace-nowrap px-3.5 sm:px-4 py-2 rounded-full border border-slate-300 text-[12px] sm:text-[13px] font-semibold transition min-h-[40px]">En Alquiler</button>
+        </div>
+        <div class="pills-scroll flex items-center gap-1.5 overflow-x-auto sm:flex-wrap sm:overflow-visible py-1 -mx-1 px-1 lg:flex-1 lg:border-l lg:border-slate-200 lg:pl-5" id="filtros-tipo">
+          <span class="shrink-0 text-[11px] sm:text-xs font-bold uppercase tracking-wider text-slate-400 sm:mr-1"><i class="fa-solid fa-house mr-1.5"></i>Inmueble</span>
+          <button data-tipo="todos" class="filter-btn-tipo active shrink-0 whitespace-nowrap px-3.5 sm:px-4 py-2 rounded-full border border-slate-300 text-[12px] sm:text-[13px] font-semibold transition min-h-[40px]">Todos</button>
+          <button data-tipo="departamento" class="filter-btn-tipo shrink-0 whitespace-nowrap px-3.5 sm:px-4 py-2 rounded-full border border-slate-300 text-[12px] sm:text-[13px] font-semibold transition min-h-[40px]">Depas</button>
+          <button data-tipo="casa" class="filter-btn-tipo shrink-0 whitespace-nowrap px-3.5 sm:px-4 py-2 rounded-full border border-slate-300 text-[12px] sm:text-[13px] font-semibold transition min-h-[40px]">Casas</button>
+          <button data-tipo="terreno" class="filter-btn-tipo shrink-0 whitespace-nowrap px-3.5 sm:px-4 py-2 rounded-full border border-slate-300 text-[12px] sm:text-[13px] font-semibold transition min-h-[40px]">Terrenos</button>
         </div>
       </div>
-      <div class="flex flex-col sm:flex-row sm:items-center gap-2.5 sm:gap-3 mt-4">
-        <div class="relative flex-1">
-          <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-sm pointer-events-none"></i>
-          <input id="buscador-prop" type="search" placeholder="Buscar por distrito o nombre… (ej. Miraflores)" autocomplete="off"
-            class="w-full border border-slate-300 rounded-full pl-11 pr-10 py-3 min-h-[48px] focus:outline-none focus:ring-2 focus:ring-gold focus:border-gold bg-white" />
-          <button id="buscar-clear" aria-label="Limpiar búsqueda" class="hidden absolute right-3 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full text-slate-400 hover:text-navy hover:bg-slate-100 transition items-center justify-center"><i class="fa-solid fa-xmark"></i></button>
-        </div>
-        <button id="filtros-limpiar" class="hidden shrink-0 inline-flex items-center justify-center gap-2 px-5 py-3 min-h-[48px] rounded-full border border-slate-300 text-sm font-semibold text-navy hover:bg-navy hover:text-white hover:border-navy transition"><i class="fa-solid fa-rotate-left"></i>Limpiar</button>
-        <p id="contador-prop" class="text-sm text-slate-500 sm:text-right sm:ml-auto shrink-0" aria-live="polite"></p>
-      </div>
-
-      <!-- Tira horizontal full-bleed (pegada al borde) + flechas -->
-      <div class="flex items-center justify-between mt-5 gap-3">
-        <p class="text-xs sm:text-sm text-slate-400 font-medium"><i class="fa-solid fa-hand-pointer mr-1.5 sm:hidden"></i><i class="fa-solid fa-arrows-left-right mr-1.5 hidden sm:inline"></i><span class="sm:hidden">Desliza</span><span class="hidden sm:inline">Desliza o arrastra para ver más</span></p>
+      <!-- Utilidad: contador + flechas del carrusel -->
+      <div class="flex items-center justify-between mt-3 gap-3">
+        <p id="contador-prop" class="text-[13px] sm:text-sm text-slate-500 font-medium truncate" aria-live="polite"></p>
         <div class="flex gap-2 shrink-0">
           <button id="prop-prev" aria-label="Anterior" class="w-10 h-10 rounded-full border border-slate-300 text-navy hover:bg-navy hover:text-white hover:border-navy transition flex items-center justify-center disabled:opacity-30 disabled:pointer-events-none"><i class="fa-solid fa-chevron-left"></i></button>
           <button id="prop-next" aria-label="Siguiente" class="w-10 h-10 rounded-full border border-slate-300 text-navy hover:bg-navy hover:text-white hover:border-navy transition flex items-center justify-center disabled:opacity-30 disabled:pointer-events-none"><i class="fa-solid fa-chevron-right"></i></button>
@@ -555,7 +556,7 @@
       contador.textContent = visibles === 0
         ? "0 resultados — ajusta la búsqueda o limpia los filtros"
         : (filtrosActivos() ? `Mostrando ${visibles} de ${totalProps}` : `${totalProps} propiedades`);
-      if (btnLimpiar) btnLimpiar.classList.toggle("hidden", !filtrosActivos());
+      if (btnLimpiar) { btnLimpiar.classList.toggle("hidden", !filtrosActivos()); btnLimpiar.classList.toggle("flex", filtrosActivos()); }
       syncAria();
       // Al filtrar: volver al inicio del carrusel y resincronizar flechas
       const t = document.getElementById("grid-propiedades");
