@@ -48,8 +48,13 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
 
-  <!-- FontAwesome para iconos -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <!-- Preload imagen hero (LCP): liviana en móvil, grande en PC -->
+  <link rel="preload" as="image" fetchpriority="high" media="(max-width: 1023px)" href="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=70&w=800&auto=format&fit=crop" />
+  <link rel="preload" as="image" fetchpriority="high" media="(min-width: 1024px)" href="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=75&w=1600&auto=format&fit=crop" />
+
+  <!-- FontAwesome asíncrono (no bloquea el primer pintado) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" media="print" onload="this.media='all'" />
+  <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" /></noscript>
 
   <!-- Tailwind CSS vía CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -86,8 +91,13 @@
     }
     h1,h2,h3,.font-heading { font-family: 'Montserrat', sans-serif; }
     .hero-bg {
-      background-image: linear-gradient(rgba(2,6,23,.72), rgba(15,23,42,.55)), url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=1920&auto=format&fit=crop');
+      background-image: linear-gradient(rgba(2,6,23,.72), rgba(15,23,42,.55)), url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=70&w=800&auto=format&fit=crop');
       background-size: cover; background-position: center;
+    }
+    @media (min-width: 1024px) {
+      .hero-bg {
+        background-image: linear-gradient(rgba(2,6,23,.72), rgba(15,23,42,.55)), url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=75&w=1600&auto=format&fit=crop');
+      }
     }
     .card-img { transition: transform .6s ease; }
     .prop-card:hover .card-img { transform: scale(1.07); }
