@@ -62,8 +62,13 @@
   <!-- Tailwind compilado local (21KB, no bloquea como el CDN) -->
   <link rel="stylesheet" href="/styles.css" />
   <style>
+    /* Fuentes de reserva con métricas igualadas (evitan saltos de layout al cargar) */
+    @font-face { font-family:'Montserrat-fallback'; src:local('Arial'); size-adjust:105.69%; ascent-override:96.8%; descent-override:25.1%; line-gap-override:0%; }
+    @font-face { font-family:'Inter-fallback'; src:local('Arial'); size-adjust:105.16%; ascent-override:96.88%; descent-override:24.12%; line-gap-override:0%; }
+    /* Reserva de espacio para iconos antes de que cargue FontAwesome */
+    .fa-solid,.fa-regular,.fa-brands { font-style:normal; line-height:1; display:inline-block; min-width:1.2em; text-align:center; }
     html, body { overflow-x: hidden; max-width: 100%; }
-    body { font-family: 'Inter', sans-serif; }
+    body { font-family: 'Inter','Inter-fallback',sans-serif; }
     img { max-width: 100%; height: auto; }
     section[id] { scroll-margin-top: 80px; }
     /* Inputs a 16px para evitar zoom automático en iOS */
@@ -71,7 +76,7 @@
     @media (min-width: 640px) {
       input, select, textarea { font-size: 15px; }
     }
-    h1,h2,h3,.font-heading { font-family: 'Montserrat', sans-serif; }
+    h1,h2,h3,.font-heading { font-family: 'Montserrat','Montserrat-fallback',sans-serif; }
     .hero-bg {
       background-image: linear-gradient(rgba(2,6,23,.72), rgba(15,23,42,.55)), url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=70&w=800&auto=format&fit=crop&fm=webp');
       background-size: cover; background-position: center;
