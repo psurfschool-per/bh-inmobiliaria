@@ -97,6 +97,8 @@
     /* Botón WhatsApp flotante */
     .wa-float { animation: pulseWa 2.2s infinite; }
     @keyframes pulseWa { 0%{box-shadow:0 0 0 0 rgba(37,211,102,.5)} 70%{box-shadow:0 0 0 16px rgba(37,211,102,0)} 100%{box-shadow:0 0 0 0 rgba(37,211,102,0)} }
+    /* Menú móvil: enlaces con área táctil amplia */
+    #menu-movil a:not([data-wa-general]) { padding: .6rem 0; display: block; }
     /* Filas de filtros: scroll horizontal limpio en móvil */
     .pills-scroll { scrollbar-width: none; -webkit-overflow-scrolling: touch; }
     .pills-scroll::-webkit-scrollbar { display: none; }
@@ -209,11 +211,11 @@
       </div>
       <!-- Utilidad: contador + flechas del carrusel -->
       <div class="flex items-center justify-between mt-3 gap-3">
-        <p id="contador-prop" class="text-[13px] sm:text-sm text-slate-500 font-medium truncate" aria-live="polite"></p>
+        <p id="contador-prop" class="text-[13px] sm:text-sm text-slate-500 font-medium truncate min-w-0" aria-live="polite"></p>
         <div class="flex items-center gap-2 shrink-0">
           <button id="filtros-limpiar" class="hidden items-center gap-1.5 text-[13px] font-semibold text-gold hover:text-navy transition px-2 min-h-[40px]"><i class="fa-solid fa-rotate-left"></i>Limpiar</button>
-          <button id="prop-prev" aria-label="Anterior" class="w-10 h-10 rounded-full border border-slate-300 text-navy hover:bg-navy hover:text-white hover:border-navy transition flex items-center justify-center disabled:opacity-30 disabled:pointer-events-none lg:hidden"><i class="fa-solid fa-chevron-left"></i></button>
-          <button id="prop-next" aria-label="Siguiente" class="w-10 h-10 rounded-full border border-slate-300 text-navy hover:bg-navy hover:text-white hover:border-navy transition flex items-center justify-center disabled:opacity-30 disabled:pointer-events-none lg:hidden"><i class="fa-solid fa-chevron-right"></i></button>
+          <button id="prop-prev" aria-label="Anterior" class="w-11 h-11 rounded-full border border-slate-300 text-navy hover:bg-navy hover:text-white hover:border-navy transition flex items-center justify-center disabled:opacity-30 disabled:pointer-events-none lg:hidden"><i class="fa-solid fa-chevron-left"></i></button>
+          <button id="prop-next" aria-label="Siguiente" class="w-11 h-11 rounded-full border border-slate-300 text-navy hover:bg-navy hover:text-white hover:border-navy transition flex items-center justify-center disabled:opacity-30 disabled:pointer-events-none lg:hidden"><i class="fa-solid fa-chevron-right"></i></button>
         </div>
       </div>
     </div><!-- /container -->
@@ -230,7 +232,7 @@
           <div class="p-4 sm:p-5 flex-1 flex flex-col min-w-0">
             <h3 class="font-bold text-[15px] sm:text-base leading-snug text-navy">Terreno en Chorrillos</h3>
             <p class="text-slate-500 text-xs sm:text-[13px] mt-0.5"><i class="fa-solid fa-location-dot text-gold mr-1"></i> Chorrillos, Lima</p>
-            <a href="https://maps.app.goo.gl/LyDMLnBotdmYw51g6?g_st=iwb" target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 text-xs sm:text-[13px] font-semibold text-gold hover:text-navy transition mt-1"><i class="fa-solid fa-map-location-dot"></i>Ver ubicación en mapa<i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i></a>
+            <a href="https://maps.app.goo.gl/LyDMLnBotdmYw51g6?g_st=iwb" target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 text-xs sm:text-[13px] font-semibold text-gold hover:text-navy transition mt-0.5 py-1"><i class="fa-solid fa-map-location-dot"></i>Ver ubicación en mapa<i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i></a>
             <div class="flex flex-col gap-1.5 text-[12px] sm:text-[13px] text-slate-600 mt-3 border-t border-slate-100 pt-3">
               <span><i class="fa-solid fa-ruler-combined text-gold mr-1.5"></i>2,500 m² de área total</span>
               <span><i class="fa-solid fa-circle-info text-gold mr-1.5"></i>Más detalles por WhatsApp</span>
@@ -250,7 +252,7 @@
           <div class="p-4 sm:p-5 flex-1 flex flex-col min-w-0">
             <h3 class="font-bold text-[15px] sm:text-base leading-snug text-navy">Terreno en San Bartolo</h3>
             <p class="text-slate-500 text-xs sm:text-[13px] mt-0.5"><i class="fa-solid fa-location-dot text-gold mr-1"></i> San Bartolo, Km 50</p>
-            <a href="https://maps.app.goo.gl/Ci63yvWVTAoVqFP67" target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 text-xs sm:text-[13px] font-semibold text-gold hover:text-navy transition mt-1"><i class="fa-solid fa-map-location-dot"></i>Ver ubicación en mapa<i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i></a>
+            <a href="https://maps.app.goo.gl/Ci63yvWVTAoVqFP67" target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 text-xs sm:text-[13px] font-semibold text-gold hover:text-navy transition mt-0.5 py-1"><i class="fa-solid fa-map-location-dot"></i>Ver ubicación en mapa<i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i></a>
             <div class="flex flex-col gap-1.5 text-[12px] sm:text-[13px] text-slate-600 mt-3 border-t border-slate-100 pt-3">
               <span><i class="fa-solid fa-ruler-combined text-gold mr-1.5"></i>12 hectáreas de área total</span>
               <span><i class="fa-solid fa-circle-info text-gold mr-1.5"></i>Más detalles por WhatsApp</span>
@@ -270,7 +272,7 @@
           <div class="p-4 sm:p-5 flex-1 flex flex-col min-w-0">
             <h3 class="font-bold text-[15px] sm:text-base leading-snug text-navy">Terreno Villa El Salvador</h3>
             <p class="text-slate-500 text-xs sm:text-[13px] mt-0.5"><i class="fa-solid fa-location-dot text-gold mr-1"></i> Calle Marianela Moyano, Villa El Salvador</p>
-            <a href="https://maps.app.goo.gl/YoMfaJeubQrcJrFd7" target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 text-xs sm:text-[13px] font-semibold text-gold hover:text-navy transition mt-1"><i class="fa-solid fa-map-location-dot"></i>Ver ubicación en mapa<i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i></a>
+            <a href="https://maps.app.goo.gl/YoMfaJeubQrcJrFd7" target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 text-xs sm:text-[13px] font-semibold text-gold hover:text-navy transition mt-0.5 py-1"><i class="fa-solid fa-map-location-dot"></i>Ver ubicación en mapa<i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i></a>
             <div class="flex flex-col gap-1.5 text-[12px] sm:text-[13px] text-slate-600 mt-3 border-t border-slate-100 pt-3">
               <span><i class="fa-solid fa-ruler-combined text-gold mr-1.5"></i>7,514 m² de área total</span>
               <span><i class="fa-solid fa-circle-info text-gold mr-1.5"></i>Más detalles por WhatsApp</span>
@@ -412,10 +414,10 @@
         </div>
         <p class="text-sm mt-4 leading-relaxed text-slate-400">BH Inmobiliaria • Venta y alquiler de inmuebles en Lima, Perú con asesoría personalizada, legal y transparente.</p>
         <div class="flex gap-3 mt-5">
-          <a href="#" aria-label="Instagram" class="w-10 h-10 rounded-full bg-white/10 hover:bg-gold flex items-center justify-center transition"><i class="fa-brands fa-instagram"></i></a>
-          <a href="#" aria-label="Facebook" class="w-10 h-10 rounded-full bg-white/10 hover:bg-gold flex items-center justify-center transition"><i class="fa-brands fa-facebook-f"></i></a>
-          <a href="#" aria-label="LinkedIn" class="w-10 h-10 rounded-full bg-white/10 hover:bg-gold flex items-center justify-center transition"><i class="fa-brands fa-linkedin-in"></i></a>
-          <a href="#" aria-label="TikTok" class="w-10 h-10 rounded-full bg-white/10 hover:bg-gold flex items-center justify-center transition"><i class="fa-brands fa-tiktok"></i></a>
+          <a href="#" aria-label="Instagram" class="w-11 h-11 rounded-full bg-white/10 hover:bg-gold flex items-center justify-center transition"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#" aria-label="Facebook" class="w-11 h-11 rounded-full bg-white/10 hover:bg-gold flex items-center justify-center transition"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#" aria-label="LinkedIn" class="w-11 h-11 rounded-full bg-white/10 hover:bg-gold flex items-center justify-center transition"><i class="fa-brands fa-linkedin-in"></i></a>
+          <a href="#" aria-label="TikTok" class="w-11 h-11 rounded-full bg-white/10 hover:bg-gold flex items-center justify-center transition"><i class="fa-brands fa-tiktok"></i></a>
         </div>
       </div>
       <div>
@@ -445,7 +447,7 @@
 
   <!-- Botón flotante WhatsApp -->
   <a data-wa-general href="#" target="_blank" aria-label="WhatsApp"
-     class="wa-float fixed bottom-5 right-5 sm:bottom-6 sm:right-6 z-50 w-14 h-14 sm:w-15 sm:h-15 rounded-full bg-[#25D366] hover:bg-[#1eb857] text-white flex items-center justify-center text-[28px] sm:text-3xl shadow-xl transition"
+     class="wa-float fixed bottom-5 right-5 sm:bottom-6 sm:right-6 z-50 w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-[#25D366] hover:bg-[#1eb857] text-white flex items-center justify-center text-[28px] sm:text-3xl shadow-xl transition"
      style="margin-bottom: env(safe-area-inset-bottom);">
     <i class="fa-brands fa-whatsapp"></i>
   </a>
