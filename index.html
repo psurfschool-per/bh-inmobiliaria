@@ -46,11 +46,14 @@
   <!-- Google Fonts: Montserrat (títulos) + Inter (texto) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Preload fuentes críticas (LCP es texto Montserrat) -->
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="https://fonts.gstatic.com/s/montserrat/v31/JTUSjIg1_i6t8kCHKm459WlhyyTh89Y.woff2" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7W0Q5nw.woff2" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
 
   <!-- Preload imagen hero (LCP): liviana en móvil, grande en PC -->
-  <link rel="preload" as="image" fetchpriority="high" media="(max-width: 1023px)" href="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=70&w=800&auto=format&fit=crop" />
-  <link rel="preload" as="image" fetchpriority="high" media="(min-width: 1024px)" href="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=75&w=1600&auto=format&fit=crop" />
+  <link rel="preload" as="image" fetchpriority="high" media="(max-width: 1023px)" href="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=70&w=800&auto=format&fit=crop&fm=webp" />
+  <link rel="preload" as="image" fetchpriority="high" media="(min-width: 1024px)" href="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=75&w=1600&auto=format&fit=crop&fm=webp" />
 
   <!-- FontAwesome asíncrono (no bloquea el primer pintado) -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" media="print" onload="this.media='all'" />
@@ -70,12 +73,12 @@
     }
     h1,h2,h3,.font-heading { font-family: 'Montserrat', sans-serif; }
     .hero-bg {
-      background-image: linear-gradient(rgba(2,6,23,.72), rgba(15,23,42,.55)), url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=70&w=800&auto=format&fit=crop');
+      background-image: linear-gradient(rgba(2,6,23,.72), rgba(15,23,42,.55)), url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=70&w=800&auto=format&fit=crop&fm=webp');
       background-size: cover; background-position: center;
     }
     @media (min-width: 1024px) {
       .hero-bg {
-        background-image: linear-gradient(rgba(2,6,23,.72), rgba(15,23,42,.55)), url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=75&w=1600&auto=format&fit=crop');
+        background-image: linear-gradient(rgba(2,6,23,.72), rgba(15,23,42,.55)), url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=75&w=1600&auto=format&fit=crop&fm=webp');
       }
     }
     .card-img { transition: transform .6s ease; }
@@ -216,7 +219,7 @@
         <!-- CARD 1: Terreno real en Chorrillos -->
         <article class="prop-card bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-card hover:shadow-xl transition min-w-[92%] sm:min-w-[80%] lg:min-w-[31.5%] shrink-0 snap-start fade-in flex flex-col sm:flex-row" data-operacion="venta" data-f="terreno" data-titulo="Terreno en Chorrillos">
           <div class="relative w-full h-52 sm:h-auto sm:w-[46%] shrink-0 overflow-hidden sm:min-h-[260px]">
-            <img src="fotos/terreno-chorrillos.jpg" alt="Vista satelital del terreno en Chorrillos junto a Jr. Juno" class="card-img absolute inset-0 w-full h-full object-cover" loading="lazy">
+            <img src="fotos/terreno-chorrillos.webp" alt="Vista satelital del terreno en Chorrillos junto a Jr. Juno" class="card-img absolute inset-0 w-full h-full object-cover" loading="lazy">
             <span class="absolute top-3 left-3 bg-navy text-white text-[11px] font-bold px-2.5 py-1 rounded-full tracking-wide">EN VENTA</span>
           </div>
           <div class="p-4 sm:p-5 flex-1 flex flex-col min-w-0">
@@ -236,7 +239,7 @@
         <!-- CARD 2: Terreno real en San Bartolo -->
         <article class="prop-card bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-card hover:shadow-xl transition min-w-[92%] sm:min-w-[80%] lg:min-w-[31.5%] shrink-0 snap-start flex flex-col sm:flex-row fade-in" data-operacion="venta" data-f="terreno" data-titulo="Terreno en San Bartolo">
           <div class="relative w-full h-52 sm:h-auto sm:w-[46%] shrink-0 overflow-hidden sm:min-h-[260px]">
-            <img src="fotos/terreno-sanbartolo.jpg" alt="Vista satelital del terreno en San Bartolo, Km 50" class="card-img absolute inset-0 w-full h-full object-cover" loading="lazy">
+            <img src="fotos/terreno-sanbartolo.webp" alt="Vista satelital del terreno en San Bartolo, Km 50" class="card-img absolute inset-0 w-full h-full object-cover" loading="lazy">
             <span class="absolute top-3 left-3 bg-navy text-white text-[11px] font-bold px-2.5 py-1 rounded-full tracking-wide">EN VENTA</span>
           </div>
           <div class="p-4 sm:p-5 flex-1 flex flex-col min-w-0">
@@ -256,7 +259,7 @@
         <!-- CARD 3: Terreno real en Villa El Salvador -->
         <article class="prop-card bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-card hover:shadow-xl transition min-w-[92%] sm:min-w-[80%] lg:min-w-[31.5%] shrink-0 snap-start flex flex-col sm:flex-row fade-in" data-operacion="venta" data-f="terreno" data-titulo="Terreno Villa El Salvador">
           <div class="relative w-full h-52 sm:h-auto sm:w-[46%] shrink-0 overflow-hidden sm:min-h-[260px]">
-            <img src="fotos/terreno-villaelsalvador.jpg" alt="Vista satelital del terreno en Villa El Salvador" class="card-img absolute inset-0 w-full h-full object-cover" loading="lazy">
+            <img src="fotos/terreno-villaelsalvador.webp" alt="Vista satelital del terreno en Villa El Salvador" class="card-img absolute inset-0 w-full h-full object-cover" loading="lazy">
             <span class="absolute top-3 left-3 bg-navy text-white text-[11px] font-bold px-2.5 py-1 rounded-full tracking-wide">EN VENTA</span>
           </div>
           <div class="p-4 sm:p-5 flex-1 flex flex-col min-w-0">
@@ -357,7 +360,7 @@
   <section id="sobre-mi" class="py-14 sm:py-20 bg-slate-50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-10 sm:gap-12 items-center">
       <div class="relative pb-8 sm:pb-0">
-        <img src="fotos/Foto.Berardina.jpeg" alt="BH Inmobiliaria - Asesoría inmobiliaria en Lima" class="rounded-2xl shadow-card w-full max-w-md mx-auto object-cover object-top h-[340px] sm:h-[440px] lg:h-[480px]" loading="lazy">
+        <img src="fotos/foto-berardina.webp" alt="BH Inmobiliaria - Asesoría inmobiliaria en Lima" class="rounded-2xl shadow-card w-full max-w-md mx-auto object-cover object-top h-[340px] sm:h-[440px] lg:h-[480px]" loading="lazy">
         <div class="absolute bottom-0 sm:-bottom-6 left-1/2 -translate-x-1/2 lg:left-8 lg:translate-x-0 bg-navy text-white rounded-2xl px-5 sm:px-6 py-3 sm:py-4 shadow-xl flex items-center gap-3 w-[92%] max-w-[340px] sm:w-auto">
           <span class="w-11 h-11 shrink-0 rounded-full bg-[#25D366] flex items-center justify-center text-2xl"><i class="fa-brands fa-whatsapp"></i></span>
           <div class="leading-tight"><p class="font-heading font-bold">Respuesta inmediata</p><p class="text-xs text-slate-300">Escríbenos por WhatsApp</p></div>
