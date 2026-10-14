@@ -4,12 +4,16 @@
   "description": "BH Inmobiliaria, Lima Peru. Landing inmobiliaria.",
   "private": true,
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "build:css": "tailwindcss -c tailwind.config.js -i ./src/input.css -o ./styles.css --minify"
   },
   "dependencies": {
     "express": "^4.19.2"
   },
   "engines": {
     "node": "20.x"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.19"
   }
 }

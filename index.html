@@ -56,29 +56,8 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" media="print" onload="this.media='all'" />
   <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" /></noscript>
 
-  <!-- Tailwind CSS vía CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    // Configuración de marca: Azul Marino + Dorado
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            navy: { DEFAULT: '#0f172a', light: '#1e293b', dark: '#020617' },
-            gold: { DEFAULT: '#d97706', light: '#f59e0b', soft: '#fef3c7' }
-          },
-          fontFamily: {
-            heading: ['Montserrat', 'sans-serif'],
-            body: ['Inter', 'sans-serif']
-          },
-          boxShadow: {
-            card: '0 10px 30px -10px rgba(15,23,42,.18)',
-            cta: '0 10px 25px -8px rgba(217,119,6,.55)'
-          }
-        }
-      }
-    }
-  </script>
+  <!-- Tailwind compilado local (21KB, no bloquea como el CDN) -->
+  <link rel="stylesheet" href="/styles.css" />
   <style>
     html, body { overflow-x: hidden; max-width: 100%; }
     body { font-family: 'Inter', sans-serif; }
@@ -104,9 +83,10 @@
     .filter-btn.active { background:#d97706; color:#fff; border-color:#d97706; }
     .fade-in { animation: fadeIn .45s ease both; }
     @keyframes fadeIn { from { opacity:0; transform: translateY(12px);} to { opacity:1; transform: translateY(0);} }
-    /* Botón WhatsApp flotante */
-    .wa-float { animation: pulseWa 2.2s infinite; }
-    @keyframes pulseWa { 0%{box-shadow:0 0 0 0 rgba(37,211,102,.5)} 70%{box-shadow:0 0 0 16px rgba(37,211,102,0)} 100%{box-shadow:0 0 0 0 rgba(37,211,102,0)} }
+    /* Botón WhatsApp flotante: pulso solo con transform+opacidad (no bloquea el hilo principal) */
+    .wa-float { position: relative; isolation: isolate; }
+    .wa-float::after { content:""; position:absolute; inset:0; border-radius:9999px; background:#25D366; z-index:-1; animation: pulseWa 2.2s ease-out infinite; }
+    @keyframes pulseWa { 0%{transform:scale(1);opacity:.45} 70%{transform:scale(1.4);opacity:0} 100%{transform:scale(1.4);opacity:0} }
     /* Menú móvil: enlaces con área táctil amplia */
     #menu-movil a:not([data-wa-general]) { padding: .6rem 0; display: block; }
     /* Filas de filtros: scroll horizontal limpio en móvil */
@@ -191,7 +171,7 @@
           </a>
         </div>
         <!-- mini trust -->
-        <div class="flex flex-col xs:flex-row flex-wrap gap-x-8 gap-y-2 sm:gap-y-3 mt-8 sm:mt-10 text-slate-200 text-[13px] sm:text-sm">
+        <div class="flex flex-col flex-wrap gap-x-8 gap-y-2 sm:gap-y-3 mt-8 sm:mt-10 text-slate-200 text-[13px] sm:text-sm">
           <span><i class="fa-solid fa-circle-check text-gold-light mr-2"></i>Valoración gratuita</span>
           <span><i class="fa-solid fa-circle-check text-gold-light mr-2"></i>Atención por WhatsApp inmediata</span>
         </div>

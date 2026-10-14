@@ -7,7 +7,7 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 // Servir archivos estáticos de esta carpeta (index.html, imágenes, etc.)
-app.use(express.static(__dirname, { maxAge: '1d' }));
+app.use(express.static(__dirname, { maxAge: '7d', etag: true }));
 
 // Fallback SPA: cualquier ruta devuelve index.html
 app.get('*', (req, res) => {
