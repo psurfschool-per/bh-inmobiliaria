@@ -92,7 +92,8 @@
     .fade-in { animation: fadeIn .45s ease both; }
     @keyframes fadeIn { from { opacity:0; transform: translateY(12px);} to { opacity:1; transform: translateY(0);} }
     /* Botón WhatsApp flotante: pulso solo con transform+opacidad (no bloquea el hilo principal) */
-    .wa-float { position: relative; isolation: isolate; }
+    /* Ojo: NO declarar position aquí (ganaría sobre la clase .fixed de Tailwind y lo sacaría del viewport) */
+    .wa-float { isolation: isolate; }
     .wa-float::after { content:""; position:absolute; inset:0; border-radius:9999px; background:#25D366; z-index:-1; animation: pulseWa 2.2s ease-out infinite; }
     @keyframes pulseWa { 0%{transform:scale(1);opacity:.45} 70%{transform:scale(1.4);opacity:0} 100%{transform:scale(1.4);opacity:0} }
     /* Menú móvil: enlaces con área táctil amplia */
@@ -134,11 +135,6 @@
         <a href="#sobre-mi" class="hover:text-gold-light transition">Nosotros</a>
         <a href="#contacto" class="hover:text-gold-light transition">Contacto</a>
       </div>
-      <div class="hidden md:block">
-        <a data-wa-general href="#" target="_blank" class="inline-flex items-center gap-2 bg-[#25D366] hover:bg-[#1eb857] text-navy font-semibold px-5 py-2.5 rounded-full transition shadow">
-          <i class="fa-brands fa-whatsapp text-lg"></i> WhatsApp Directo
-        </a>
-      </div>
       <!-- Botón móvil -->
       <button id="btn-menu" class="md:hidden text-white text-2xl px-3 py-2 min-w-[44px] min-h-[44px]" aria-label="Abrir menú">
         <i class="fa-solid fa-bars"></i>
@@ -151,9 +147,6 @@
       <a href="#vender" class="hover:text-gold-light">Vender mi Propiedad</a>
       <a href="#sobre-mi" class="hover:text-gold-light">Nosotros</a>
       <a href="#contacto" class="hover:text-gold-light">Contacto</a>
-      <a data-wa-general href="#" target="_blank" class="mt-2 inline-flex justify-center items-center gap-2 bg-[#25D366] text-navy font-semibold px-5 py-3 rounded-full">
-        <i class="fa-brands fa-whatsapp"></i> WhatsApp Directo
-      </a>
     </div>
   </header>
 
