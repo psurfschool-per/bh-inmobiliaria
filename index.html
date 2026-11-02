@@ -88,7 +88,7 @@
     }
     .card-img { transition: transform .6s ease; }
     .prop-card:hover .card-img { transform: scale(1.07); }
-    .filter-btn.active { background:#d97706; color:#fff; border-color:#d97706; }
+    .filter-btn.active { background:#b45309; color:#fff; border-color:#b45309; }
     .fade-in { animation: fadeIn .45s ease both; }
     @keyframes fadeIn { from { opacity:0; transform: translateY(12px);} to { opacity:1; transform: translateY(0);} }
     /* Botón WhatsApp flotante: pulso solo con transform+opacidad (no bloquea el hilo principal) */
@@ -135,7 +135,7 @@
         <a href="#contacto" class="hover:text-gold-light transition">Contacto</a>
       </div>
       <div class="hidden md:block">
-        <a data-wa-general href="#" target="_blank" class="inline-flex items-center gap-2 bg-[#25D366] hover:bg-[#1eb857] text-white font-semibold px-5 py-2.5 rounded-full transition shadow">
+        <a data-wa-general href="#" target="_blank" class="inline-flex items-center gap-2 bg-[#25D366] hover:bg-[#1eb857] text-navy font-semibold px-5 py-2.5 rounded-full transition shadow">
           <i class="fa-brands fa-whatsapp text-lg"></i> WhatsApp Directo
         </a>
       </div>
@@ -151,11 +151,13 @@
       <a href="#vender" class="hover:text-gold-light">Vender mi Propiedad</a>
       <a href="#sobre-mi" class="hover:text-gold-light">Nosotros</a>
       <a href="#contacto" class="hover:text-gold-light">Contacto</a>
-      <a data-wa-general href="#" target="_blank" class="mt-2 inline-flex justify-center items-center gap-2 bg-[#25D366] text-white font-semibold px-5 py-3 rounded-full">
+      <a data-wa-general href="#" target="_blank" class="mt-2 inline-flex justify-center items-center gap-2 bg-[#25D366] text-navy font-semibold px-5 py-3 rounded-full">
         <i class="fa-brands fa-whatsapp"></i> WhatsApp Directo
       </a>
     </div>
   </header>
+
+  <main id="contenido">
 
   <!-- ================= HERO ================= -->
   <section id="inicio" class="hero-bg min-h-[92vh] flex items-center pt-[64px] sm:pt-[70px]">
@@ -171,7 +173,7 @@
           Asesoría personalizada, valoración gratuita y acompañamiento legal de principio a fin. Compramos confianza, vendemos hogares.
         </p>
         <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 mt-7 sm:mt-8">
-          <a href="#propiedades" class="w-full sm:w-auto inline-flex justify-center items-center gap-2 bg-gold hover:bg-gold-light text-white font-heading font-bold px-6 sm:px-8 py-3.5 sm:py-4 rounded-xl shadow-cta transition min-h-[52px]">
+          <a href="#propiedades" class="w-full sm:w-auto inline-flex justify-center items-center gap-2 bg-gold hover:bg-gold-light text-navy font-heading font-bold px-6 sm:px-8 py-3.5 sm:py-4 rounded-xl shadow-cta transition min-h-[52px]">
             <i class="fa-solid fa-building-circle-check"></i> Ver Propiedades
           </a>
           <a href="#vender" class="w-full sm:w-auto inline-flex justify-center items-center gap-2 bg-white hover:bg-slate-100 text-navy font-heading font-bold px-6 sm:px-8 py-3.5 sm:py-4 rounded-xl transition min-h-[52px]">
@@ -191,7 +193,7 @@
   <section id="propiedades" class="py-14 sm:py-20 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center max-w-2xl mx-auto px-1">
-        <p class="text-gold font-bold tracking-widest text-xs sm:text-sm uppercase">Catálogo actualizado</p>
+        <p class="text-gold-dark font-bold tracking-widest text-xs sm:text-sm uppercase">Catálogo actualizado</p>
         <h2 class="font-extrabold text-[1.7rem] sm:text-4xl text-navy mt-2 leading-tight">Propiedades Destacadas</h2>
         <p class="text-slate-500 mt-3 text-[15px] sm:text-base">Toca “Consultar” y te contactamos por WhatsApp al instante.</p>
       </div>
@@ -212,7 +214,7 @@
       <div class="flex items-center justify-between mt-3 gap-3">
         <p id="contador-prop" class="text-[13px] sm:text-sm text-slate-500 font-medium truncate min-w-0" aria-live="polite"></p>
         <div class="flex items-center gap-2 shrink-0">
-          <button id="filtros-limpiar" class="hidden items-center gap-1.5 text-[13px] font-semibold text-gold hover:text-navy transition px-2 min-h-[40px]"><i class="fa-solid fa-rotate-left"></i>Limpiar</button>
+          <button id="filtros-limpiar" class="hidden items-center gap-1.5 text-[13px] font-semibold text-gold-dark hover:text-navy transition px-2 min-h-[40px]"><i class="fa-solid fa-rotate-left"></i>Limpiar</button>
           <button id="prop-prev" aria-label="Anterior" class="w-11 h-11 rounded-full border border-slate-300 text-navy hover:bg-navy hover:text-white hover:border-navy transition flex items-center justify-center disabled:opacity-30 disabled:pointer-events-none lg:hidden"><i class="fa-solid fa-chevron-left"></i></button>
           <button id="prop-next" aria-label="Siguiente" class="w-11 h-11 rounded-full border border-slate-300 text-navy hover:bg-navy hover:text-white hover:border-navy transition flex items-center justify-center disabled:opacity-30 disabled:pointer-events-none lg:hidden"><i class="fa-solid fa-chevron-right"></i></button>
         </div>
@@ -225,7 +227,7 @@
         <!-- CARD 1: Casa en Punta Negra -->
         <article class="prop-card bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-card hover:shadow-xl transition min-w-[92%] sm:min-w-[80%] lg:min-w-[31.5%] shrink-0 snap-start fade-in flex flex-col sm:flex-row" data-operacion="venta" data-f="casa" data-titulo="Casa en Punta Negra">
           <div class="relative w-full h-52 sm:h-auto sm:w-[46%] shrink-0 overflow-hidden sm:min-h-[260px]">
-            <img src="fotos/casa.puntanegra.jpeg" alt="Casa en venta en Punta Negra con vista directa al mar" class="card-img absolute inset-0 w-full h-full object-cover" loading="lazy">
+            <img src="fotos/casa.puntanegra.webp" alt="Casa en venta en Punta Negra con vista directa al mar" class="card-img absolute inset-0 w-full h-full object-cover" loading="lazy">
             <span class="absolute top-3 left-3 bg-navy text-white text-[11px] font-bold px-2.5 py-1 rounded-full tracking-wide">EN VENTA</span>
           </div>
           <div class="p-4 sm:p-5 flex-1 flex flex-col min-w-0">
@@ -236,7 +238,7 @@
               <span><i class="fa-solid fa-ruler-combined text-gold mr-1.5"></i>400 m² de área total</span>
               <span><i class="fa-solid fa-water text-gold mr-1.5"></i>Vista directa al mar</span>
             </div>
-            <button class="btn-consultar mt-4 w-full inline-flex justify-center items-center gap-2 bg-[#25D366] hover:bg-[#1eb857] active:bg-[#1aa851] text-white font-semibold text-sm py-2.5 rounded-lg transition min-h-[44px]">
+            <button class="btn-consultar mt-4 w-full inline-flex justify-center items-center gap-2 bg-[#25D366] hover:bg-[#1eb857] active:bg-[#1aa851] text-navy font-semibold text-sm py-2.5 rounded-lg transition min-h-[44px]">
               <i class="fa-brands fa-whatsapp text-lg"></i> Consultar
             </button>
           </div>
@@ -245,7 +247,7 @@
         <!-- CARD 2: Tienda en Shopping Plaza Surco -->
         <article class="prop-card bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-card hover:shadow-xl transition min-w-[92%] sm:min-w-[80%] lg:min-w-[31.5%] shrink-0 snap-start fade-in flex flex-col sm:flex-row" data-operacion="venta" data-f="local" data-titulo="Tienda en Shopping Plaza, Santiago de Surco">
           <div class="relative w-full h-52 sm:h-auto sm:w-[46%] shrink-0 overflow-hidden sm:min-h-[260px]">
-            <img src="fotos/local.shoppingcenter.jpg" alt="Tienda en venta en Shopping Plaza, Santiago de Surco" class="card-img absolute inset-0 w-full h-full object-cover" loading="lazy">
+            <img src="fotos/local.shoppingcenter.webp" alt="Tienda en venta en Shopping Plaza, Santiago de Surco" class="card-img absolute inset-0 w-full h-full object-cover" loading="lazy">
             <span class="absolute top-3 left-3 bg-navy text-white text-[11px] font-bold px-2.5 py-1 rounded-full tracking-wide">EN VENTA</span>
           </div>
           <div class="p-4 sm:p-5 flex-1 flex flex-col min-w-0">
@@ -256,7 +258,7 @@
               <span><i class="fa-solid fa-ruler-combined text-gold mr-1.5"></i>6 m² de área total</span>
               <span><i class="fa-solid fa-store text-gold mr-1.5"></i>Local comercial en centro comercial</span>
             </div>
-            <button class="btn-consultar mt-4 w-full inline-flex justify-center items-center gap-2 bg-[#25D366] hover:bg-[#1eb857] active:bg-[#1aa851] text-white font-semibold text-sm py-2.5 rounded-lg transition min-h-[44px]">
+            <button class="btn-consultar mt-4 w-full inline-flex justify-center items-center gap-2 bg-[#25D366] hover:bg-[#1eb857] active:bg-[#1aa851] text-navy font-semibold text-sm py-2.5 rounded-lg transition min-h-[44px]">
               <i class="fa-brands fa-whatsapp text-lg"></i> Consultar
             </button>
           </div>
@@ -276,7 +278,7 @@
               <span><i class="fa-solid fa-ruler-combined text-gold mr-1.5"></i>2,500 m² de área total</span>
               <span><i class="fa-solid fa-circle-info text-gold mr-1.5"></i>Más detalles por WhatsApp</span>
             </div>
-            <button class="btn-consultar mt-4 w-full inline-flex justify-center items-center gap-2 bg-[#25D366] hover:bg-[#1eb857] active:bg-[#1aa851] text-white font-semibold text-sm py-2.5 rounded-lg transition min-h-[44px]">
+            <button class="btn-consultar mt-4 w-full inline-flex justify-center items-center gap-2 bg-[#25D366] hover:bg-[#1eb857] active:bg-[#1aa851] text-navy font-semibold text-sm py-2.5 rounded-lg transition min-h-[44px]">
               <i class="fa-brands fa-whatsapp text-lg"></i> Consultar
             </button>
           </div>
@@ -296,7 +298,7 @@
               <span><i class="fa-solid fa-ruler-combined text-gold mr-1.5"></i>12 hectáreas de área total</span>
               <span><i class="fa-solid fa-circle-info text-gold mr-1.5"></i>Más detalles por WhatsApp</span>
             </div>
-            <button class="btn-consultar mt-4 w-full inline-flex justify-center items-center gap-2 bg-[#25D366] hover:bg-[#1eb857] active:bg-[#1aa851] text-white font-semibold text-sm py-2.5 rounded-lg transition min-h-[44px]">
+            <button class="btn-consultar mt-4 w-full inline-flex justify-center items-center gap-2 bg-[#25D366] hover:bg-[#1eb857] active:bg-[#1aa851] text-navy font-semibold text-sm py-2.5 rounded-lg transition min-h-[44px]">
               <i class="fa-brands fa-whatsapp text-lg"></i> Consultar
             </button>
           </div>
@@ -316,7 +318,7 @@
               <span><i class="fa-solid fa-ruler-combined text-gold mr-1.5"></i>7,514 m² de área total</span>
               <span><i class="fa-solid fa-circle-info text-gold mr-1.5"></i>Más detalles por WhatsApp</span>
             </div>
-            <button class="btn-consultar mt-4 w-full inline-flex justify-center items-center gap-2 bg-[#25D366] hover:bg-[#1eb857] active:bg-[#1aa851] text-white font-semibold text-sm py-2.5 rounded-lg transition min-h-[44px]">
+            <button class="btn-consultar mt-4 w-full inline-flex justify-center items-center gap-2 bg-[#25D366] hover:bg-[#1eb857] active:bg-[#1aa851] text-navy font-semibold text-sm py-2.5 rounded-lg transition min-h-[44px]">
               <i class="fa-brands fa-whatsapp text-lg"></i> Consultar
             </button>
           </div>
@@ -325,7 +327,7 @@
         <!-- CARD 6: Terreno en Puerto Eten -->
         <article class="prop-card bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-card hover:shadow-xl transition min-w-[92%] sm:min-w-[80%] lg:min-w-[31.5%] shrink-0 snap-start fade-in flex flex-col sm:flex-row" data-operacion="venta" data-f="terreno" data-titulo="Terreno en Puerto Eten, Chiclayo">
           <div class="relative w-full h-52 sm:h-auto sm:w-[46%] shrink-0 overflow-hidden sm:min-h-[260px]">
-            <img src="fotos/puerto.eten.png" alt="Vista del terreno en Puerto Eten, Chiclayo" class="card-img absolute inset-0 w-full h-full object-cover" loading="lazy">
+            <img src="fotos/puerto.eten.webp" alt="Vista del terreno en Puerto Eten, Chiclayo" class="card-img absolute inset-0 w-full h-full object-cover" loading="lazy">
             <span class="absolute top-3 left-3 bg-navy text-white text-[11px] font-bold px-2.5 py-1 rounded-full tracking-wide">EN VENTA</span>
           </div>
           <div class="p-4 sm:p-5 flex-1 flex flex-col min-w-0">
@@ -336,7 +338,7 @@
               <span><i class="fa-solid fa-ruler-combined text-gold mr-1.5"></i>213 hectáreas de área total</span>
               <span><i class="fa-solid fa-circle-info text-gold mr-1.5"></i>Más detalles por WhatsApp</span>
             </div>
-            <button class="btn-consultar mt-4 w-full inline-flex justify-center items-center gap-2 bg-[#25D366] hover:bg-[#1eb857] active:bg-[#1aa851] text-white font-semibold text-sm py-2.5 rounded-lg transition min-h-[44px]">
+            <button class="btn-consultar mt-4 w-full inline-flex justify-center items-center gap-2 bg-[#25D366] hover:bg-[#1eb857] active:bg-[#1aa851] text-navy font-semibold text-sm py-2.5 rounded-lg transition min-h-[44px]">
               <i class="fa-brands fa-whatsapp text-lg"></i> Consultar
             </button>
           </div>
@@ -379,44 +381,44 @@
         <p class="text-sm text-slate-500 mt-1">Completa y te contactamos hoy mismo por WhatsApp.</p>
         <form id="form-captacion" class="mt-6 grid sm:grid-cols-2 gap-4" novalidate>
           <div class="sm:col-span-2">
-            <label class="text-sm font-semibold text-navy">Nombre completo *</label>
-            <input required name="nombre" type="text" placeholder="Ej. María Torres" class="mt-1.5 w-full border border-slate-300 rounded-xl px-4 py-3 text-[15px] focus:outline-none focus:ring-2 focus:ring-gold focus:border-gold" />
+            <label for="f-nombre" class="text-sm font-semibold text-navy">Nombre completo *</label>
+            <input required id="f-nombre" name="nombre" type="text" placeholder="Ej. María Torres" class="mt-1.5 w-full border border-slate-300 rounded-xl px-4 py-3 text-[15px] focus:outline-none focus:ring-2 focus:ring-gold focus:border-gold" />
           </div>
           <div>
-            <label class="text-sm font-semibold text-navy">Teléfono / WhatsApp *</label>
-            <input required name="telefono" type="tel" placeholder="999 888 777" class="mt-1.5 w-full border border-slate-300 rounded-xl px-4 py-3 text-[15px] focus:outline-none focus:ring-2 focus:ring-gold focus:border-gold" />
+            <label for="f-telefono" class="text-sm font-semibold text-navy">Teléfono / WhatsApp *</label>
+            <input required id="f-telefono" name="telefono" type="tel" placeholder="999 888 777" class="mt-1.5 w-full border border-slate-300 rounded-xl px-4 py-3 text-[15px] focus:outline-none focus:ring-2 focus:ring-gold focus:border-gold" />
           </div>
           <div>
-            <label class="text-sm font-semibold text-navy">Correo</label>
-            <input name="correo" type="email" placeholder="tucorreo@mail.com" class="mt-1.5 w-full border border-slate-300 rounded-xl px-4 py-3 text-[15px] focus:outline-none focus:ring-2 focus:ring-gold focus:border-gold" />
+            <label for="f-correo" class="text-sm font-semibold text-navy">Correo</label>
+            <input id="f-correo" name="correo" type="email" placeholder="tucorreo@mail.com" class="mt-1.5 w-full border border-slate-300 rounded-xl px-4 py-3 text-[15px] focus:outline-none focus:ring-2 focus:ring-gold focus:border-gold" />
           </div>
           <div>
-            <label class="text-sm font-semibold text-navy">Tipo de inmueble *</label>
-            <select required name="tipo" class="mt-1.5 w-full border border-slate-300 rounded-xl px-4 py-3 text-[15px] bg-white focus:outline-none focus:ring-2 focus:ring-gold">
+            <label for="f-tipo" class="text-sm font-semibold text-navy">Tipo de inmueble *</label>
+            <select id="f-tipo" required name="tipo" class="mt-1.5 w-full border border-slate-300 rounded-xl px-4 py-3 text-[15px] bg-white focus:outline-none focus:ring-2 focus:ring-gold">
               <option value="">Seleccionar…</option>
               <option>Departamento</option><option>Casa</option><option>Terreno</option><option>Oficina / Local</option>
             </select>
           </div>
           <div>
-            <label class="text-sm font-semibold text-navy">Operación *</label>
-            <select required name="operacion" class="mt-1.5 w-full border border-slate-300 rounded-xl px-4 py-3 text-[15px] bg-white focus:outline-none focus:ring-2 focus:ring-gold">
+            <label for="f-operacion" class="text-sm font-semibold text-navy">Operación *</label>
+            <select id="f-operacion" required name="operacion" class="mt-1.5 w-full border border-slate-300 rounded-xl px-4 py-3 text-[15px] bg-white focus:outline-none focus:ring-2 focus:ring-gold">
               <option value="">Seleccionar…</option>
               <option>Venta</option><option>Alquiler</option>
             </select>
           </div>
           <div class="sm:col-span-2">
-            <label class="text-sm font-semibold text-navy">Ubicación / Dirección breve *</label>
-            <input required name="ubicacion" type="text" placeholder="Distrito, urbanización, referencia" class="mt-1.5 w-full border border-slate-300 rounded-xl px-4 py-3 text-[15px] focus:outline-none focus:ring-2 focus:ring-gold focus:border-gold" />
+            <label for="f-ubicacion" class="text-sm font-semibold text-navy">Ubicación / Dirección breve *</label>
+            <input required id="f-ubicacion" name="ubicacion" type="text" placeholder="Distrito, urbanización, referencia" class="mt-1.5 w-full border border-slate-300 rounded-xl px-4 py-3 text-[15px] focus:outline-none focus:ring-2 focus:ring-gold focus:border-gold" />
           </div>
           <div class="sm:col-span-2">
-            <label class="text-sm font-semibold text-navy">Mensaje / Detalles</label>
-            <textarea name="mensaje" rows="3" placeholder="Área, dormitorios, precio esperado…" class="mt-1.5 w-full border border-slate-300 rounded-xl px-4 py-3 text-[15px] focus:outline-none focus:ring-2 focus:ring-gold focus:border-gold"></textarea>
+            <label for="f-mensaje" class="text-sm font-semibold text-navy">Mensaje / Detalles</label>
+            <textarea id="f-mensaje" name="mensaje" rows="3" placeholder="Área, dormitorios, precio esperado…" class="mt-1.5 w-full border border-slate-300 rounded-xl px-4 py-3 text-[15px] focus:outline-none focus:ring-2 focus:ring-gold focus:border-gold"></textarea>
           </div>
           <p id="form-error" class="hidden sm:col-span-2 text-sm text-red-600 font-medium"></p>
           <button type="submit" class="sm:col-span-2 inline-flex justify-center items-center gap-2 bg-navy hover:bg-navy-light text-white font-heading font-bold py-4 rounded-xl transition shadow">
             <i class="fa-solid fa-paper-plane"></i> Solicitar Valoración Gratuita
           </button>
-          <p class="sm:col-span-2 text-xs text-slate-400 text-center">Al enviar se abrirá WhatsApp con tus datos listos para enviar. Sin spam.</p>
+          <p class="sm:col-span-2 text-xs text-slate-500 text-center">Al enviar se abrirá WhatsApp con tus datos listos para enviar. Sin spam.</p>
         </form>
       </div>
     </div>
@@ -433,7 +435,7 @@
         </div>
       </div>
       <div>
-        <p class="text-gold font-bold tracking-widest text-sm uppercase">Sobre nosotros</p>
+        <p class="text-gold-dark font-bold tracking-widest text-sm uppercase">Sobre nosotros</p>
         <h2 class="font-extrabold text-3xl sm:text-4xl text-navy mt-2">Tu asesora de confianza en Lima</h2>
         <p class="text-slate-600 mt-5 leading-relaxed">
           Somos <strong class="text-navy">BH Inmobiliaria, Lima Perú</strong> con más de 5 años ayudando a familias a comprar, vender y alquilar sin complicaciones. Nuestra diferencia: trato directo, honestidad en el precio y acompañamiento legal hasta la firma.
@@ -456,12 +458,14 @@
             <p class="text-[11px] sm:text-sm text-slate-500 mt-1 font-medium leading-tight">Años de experiencia</p>
           </div>
         </div>
-        <a data-wa-general href="#" target="_blank" class="mt-7 sm:mt-8 w-full sm:w-auto inline-flex justify-center items-center gap-2 bg-gold hover:bg-gold-light text-white font-heading font-bold px-7 py-3.5 rounded-xl shadow-cta transition min-h-[52px]">
+        <a data-wa-general href="#" target="_blank" class="mt-7 sm:mt-8 w-full sm:w-auto inline-flex justify-center items-center gap-2 bg-gold hover:bg-gold-light text-navy font-heading font-bold px-7 py-3.5 rounded-xl shadow-cta transition min-h-[52px]">
           <i class="fa-brands fa-whatsapp text-lg"></i> Hablemos de tu caso
         </a>
       </div>
     </div>
   </section>
+
+  </main>
 
   <!-- ================= FOOTER / CONTACTO ================= -->
   <footer id="contacto" class="bg-navy-dark text-slate-300 pt-12 sm:pt-16 pb-8">
@@ -498,7 +502,7 @@
         </ul>
       </div>
     </div>
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-12 pt-6 border-t border-white/10 flex flex-col sm:flex-row justify-between gap-2 text-xs text-slate-500">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-12 pt-6 border-t border-white/10 flex flex-col sm:flex-row justify-between gap-2 text-xs text-slate-400">
       <p>© <span id="anio">2026</span> BH Inmobiliaria, Lima Perú. Todos los derechos reservados.</p>
       <p>Hecho con compromiso por tu asesora de confianza.</p>
     </div>
@@ -506,7 +510,7 @@
 
   <!-- Botón flotante WhatsApp -->
   <a data-wa-general href="#" target="_blank" aria-label="WhatsApp"
-     class="wa-float fixed bottom-5 right-5 sm:bottom-6 sm:right-6 z-50 w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-[#25D366] hover:bg-[#1eb857] text-white flex items-center justify-center text-[28px] sm:text-3xl shadow-xl transition"
+     class="wa-float fixed bottom-5 right-5 sm:bottom-6 sm:right-6 z-50 w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-[#25D366] hover:bg-[#1eb857] text-navy flex items-center justify-center text-[28px] sm:text-3xl shadow-xl transition"
      style="margin-bottom: env(safe-area-inset-bottom);">
     <i class="fa-brands fa-whatsapp"></i>
   </a>

@@ -7,10 +7,23 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 // Servir archivos estáticos de esta carpeta (index.html, imágenes, etc.)
-app.use(express.static(__dirname, { maxAge: '7d', etag: true }));
+// HTML sin caché (siempre la última versión) y assets con caché largo.
+app.use(express.static(__dirname, {
+  etag: true,
+  setHeaders(res, filePath) {
+    if (filePath.endsWith('.html')) {
+      res.setHeader('Cache-Control', 'no-cache, must-revalidate');
+    } else if (/\.(css|js)$/.test(filePath)) {
+      res.setHeader('Cache-Control', 'public, max-age=86400');
+    } else {
+      res.setHeader('Cache-Control', 'public, max-age=2592000');
+    }
+  }
+}));
 
 // Fallback SPA: cualquier ruta devuelve index.html
 app.get('*', (req, res) => {
+  res.setHeader('Cache-Control', 'no-cache, must-revalidate');
   res.sendFile(path.join(__dirname, 'index.html'));
 });
 

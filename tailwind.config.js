@@ -5,7 +5,7 @@ module.exports = {
     extend: {
       colors: {
         navy: { DEFAULT: '#0f172a', light: '#1e293b', dark: '#020617' },
-        gold: { DEFAULT: '#d97706', light: '#f59e0b', soft: '#fef3c7' }
+        gold: { DEFAULT: '#d97706', light: '#f59e0b', soft: '#fef3c7', dark: '#b45309' }
       },
       fontFamily: {
         heading: ['Montserrat', 'sans-serif'],
